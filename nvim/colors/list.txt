@@ -1,0 +1,13 @@
+atom-dark-256.vim
+atom-dark.vim
+badwolf.vim
+dogrun.vim
+dracula.vim
+gruvbox.vim
+jellybeans.vim
+list.txt
+lucius.vim
+material-theme.vim
+molokai.vim
+onedark.vim
+tender.vim
