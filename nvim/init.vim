@@ -50,10 +50,10 @@ set clipboard+=unnamedplus
 
 "colorscheme"
 set background=dark
-colorscheme tender
-colorscheme jellybeans
+"colorscheme tender
+"colorscheme jellybeans
 "colorscheme onedark
-colorscheme badwolf
+"colorscheme badwolf
 "colorscheme molokai
 colorscheme gruvbox
 set t_Co=256

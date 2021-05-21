@@ -22,7 +22,7 @@ makedir .config/dunst
 makedir .config/xfce4
 makedir .config/xfce4/terminal
 makedir .config/nvim
-#makedir .config/nvim/colors
+makedir .config/nvim/colors
 #makedir .config/nvim/plugins
 #makedir .config/nvim/snippets
 
@@ -36,7 +36,7 @@ ln -snf `pwd`/latexmkrc $HOME/.latexmkrc
 #$HOME/.config 以下の設定ファイル
 ln -snf `pwd`/nvim/init.vim $HOME/.config/nvim/init.vim
 #ln -snf `pwd`/nvim/colors/gruvbox.vim $HOME/.config/nvim/colors/gruvbox.vim
-ln -snf `pwd`/nvim/colors $HOME/.config/nvim/colors
+#ln -snf `pwd`/nvim/colors $HOME/.config/nvim/colors
 ln -snf `pwd`/nvim/plugins $HOME/.config/nvim/plugins
 ln -snf `pwd`/nvim/snippets $HOME/.config/nvim/snippets
 ln -snf `pwd`/nvim/ftplugin $HOME/.config/nvim/ftplugin
