@@ -175,7 +175,7 @@ bindsym XF86Sleep exec --no-startup-id systemctl suspend
 # Screen brightness controls
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
-bindsym Print exec xfce4-screenshooter # decrease screen brightness
+#bindsym Print exec xfce4-screenshooter # decrease screen brightness
 
 # Media player controls
 # bindsym XF86AudioPlay exec playerctl play
@@ -183,8 +183,9 @@ bindsym Print exec xfce4-screenshooter # decrease screen brightness
 # bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec playerctl previous
 #
-exec --no-startup-id "feh --bg-scale $HOME/.config/i3/wallpaper.jpg"
+#exec --no-startup-id "feh --bg-scale $HOME/.config/i3/wallpaper.jpg"
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/endeavouros-wallpaper.jpg"
+exec --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
 #exec --no-startup-id "compton --config ~/.config/compton/compton.conf -b"
 exec --no-startup-id picom -CGb
 #exec --no-startup-id "picom --config ~/.config/picom.conf -b"
@@ -195,6 +196,7 @@ exec --no-startup-id parcellite
 exec --no-startup-id volumeicon
 exec --no-startup-id fcitx
 exec --no-startup-id "synclient TapButton1=1"
+exec --no-startup-id "pulseeffects --gapplication-service"
 
 
 # Examples
@@ -286,4 +288,10 @@ bar {
 	}
 }
 # windows+shift+s 矩形選択
-bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-screenshot.png
+#bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-screenshot.png
+bindsym Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
+#bindsym Print exec xfce4-screenshooter --fullscreen --clipboard # decrease screen brightness
+bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-rectscreenshot.png
+#bindsym Mod4+Shift+s exec xfce4-screenshooter --region --clipboard
+
+

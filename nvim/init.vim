@@ -3,10 +3,14 @@
 set fenc=utf-8
 set nobackup
 set noswapfile
+" 他の場所で上書きされたとき自動で読む
 set autoread
+" 保存してなくてもバッファに隠せる
 set hidden
+" コマンドが見える
 set showcmd
 
+" コマンドの補完
 set wildmenu 
 set wildmode=full
 set history=5000 
@@ -19,32 +23,50 @@ set cursorline
 set virtualedit=onemore
 " ビープ音を可視化
 "set visualbell
+" 対応する括弧を光らせる
 set showmatch
-set laststatus=2
+" ステータスラインを常に表示
+set laststatus=2 
 
 nnoremap j gj
 nnoremap k gk
-syntax enable
+vnoremap j gj
+vnoremap k gk
+"syntax enable
 
+" ウィンドウ移動
+"nnoremap <C-w> :wincmd w<CR>
+nnoremap w :wincmd w<CR>
 
 " Tab系
 set list listchars=tab:\▸\-
 set expandtab
-set tabstop=4
-"set tabstop=2
-set shiftwidth=4
-"set shiftwidth=2
+"set tabstop=4
+set tabstop=2
+"set shiftwidth=4
+set shiftwidth=2
 
+" 大文字小文字区別なし
 set ignorecase
+" 大文字のときのみ区別あり
 set smartcase
+" 1文字うつと検索開始
 set incsearch
 set wrapscan
-set hlsearch
+" 検索文字のハイライト
+"set hlsearch
+set nohlsearch
+set inccommand=nosplit
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+" 残りn行でスクロール開始
+set scrolloff=5
+
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+au BufNewFile,BufRead * match ZenkakuSpace /　/
 
 "set smartindent
 "set autoindent
-set cindent
+"set cindent
 "set clipboard=unnamed
 set clipboard+=unnamedplus
 
@@ -71,22 +93,51 @@ endif
 "プラグイン部分の記述 start"
 call plug#begin()
 "Plug 'scrooloose/nerdtree'
+" 置換
 Plug 'kana/vim-operator-user'
+Plug 'kana/vim-operator-replace'
+" 括弧
 Plug 'cohama/lexima.vim'
+" なんかいろいろ
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
+" 補完
 "Plug 'Shougo/deoplete.nvim'
+" ファイルタイプを
 Plug 'Shougo/context_filetype.vim'
+" スニペット
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+" include
 "Plug 'Shougo/neoinclude.vim'
 "Plug 'autozimu/LanguageClient-neovim'
+" コメントアウト
 Plug 'pacificbelt30/COOC.vim'
+" タグ生成 F2
 Plug 'preservim/tagbar'
+" powerline的なやつになる
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+" アイコン
 Plug 'ryanoasis/vim-devicons'
+" git 操作
 Plug 'tpope/vim-fugitive'
+" git の追加範囲とかにマークがつく
+Plug 'airblade/vim-gitgutter'
+" 補完
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" 賢いハイライト
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" 移動系
+Plug 'easymotion/vim-easymotion'
+" 日本語ヘルプ
+Plug 'vim-jp/vimdoc-ja'
+" .使った繰り返しが強くなるらしい (試してない)
+Plug 'tpope/vim-repeat'
+" 禅モード
+Plug 'junegunn/goyo.vim'
+" ウィンドウリサイズ
+Plug 'simeji/winresizer'
+" テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 call plug#end()
 "プラグイン部分の記述 end"
@@ -118,6 +169,7 @@ autocmd FileType cpp setlocal foldmethod=marker foldcolumn=3
 set tags
 let mapleader = "\<Space>"
 inoremap <silent> jj <ESC>
+tnoremap <silent> jj <C-\><C-n>
 nnoremap <silent> p p`]
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :q<CR>
@@ -142,4 +194,12 @@ source $HOME/.config/nvim/plugins/airline.rc.vim
 source $HOME/.config/nvim/plugins/tagbar.rc.vim
 source $HOME/.config/nvim/plugins/coc.rc.vim
 source $HOME/.config/nvim/plugins/denite.rc.vim
+source $HOME/.config/nvim/plugins/easymotion.rc.vim
+source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
 
+"foldmethod"
+set foldmethod=indent
+set foldnestmax=1
+set helplang=ja
+
+source $HOME/work/float_term/float_term.vim

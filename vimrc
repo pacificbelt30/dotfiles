@@ -119,3 +119,14 @@ augroup SpaceDelete
   ""autocmd BufWritePre * :%s/\s\+$//ge
 augroup END
 
+set scrolloff=5
+
+"検索語が画面の真ん中に来るようにする
+"nmap n nzz 
+"nmap N Nzz 
+"nmap * *zz 
+"nmap # #zz 
+"nmap g* g*zz 
+"nmap g# g#zz
+highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
+au BufNewFile,BufRead * match ZenkakuSpace /　/
