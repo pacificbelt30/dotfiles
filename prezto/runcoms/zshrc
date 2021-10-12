@@ -29,7 +29,20 @@ autoload -Uz promptinit
 promptinit
 prompt powerlevel10k
 QT_IM_MODULE=fcitx
+
+#alias
 alias textemp='cp ~/Documents/latextemp.tex `pwd`/report.tex'
+alias ls='exa'
+alias lt='exa --tree -L 3'
+bindkey -e
+
 export PATH=$HOME/.local/bin:$PATH
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# ls after cd
+chpwd(){
+  if [[ $(pwd) != $HOME ]]; then;
+    ls
+  fi
+}

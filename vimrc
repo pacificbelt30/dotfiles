@@ -2,6 +2,12 @@
 set clipboard=unnamedplus
 "文字コードをUFT-8に設定
 set fenc=utf-8
+set encoding=utf-8
+scriptencoding utf-8
+" 改行コードの自動判別
+set fileformat=unix
+" □や○文字が崩れる問題を解決
+set ambiwidth=double
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
@@ -12,6 +18,10 @@ set autoread
 set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
+"
+"set spell
+"ターミナル接続高速化
+set ttyfast
 
 " 見た目系
 " 行番号を表示
@@ -40,7 +50,6 @@ nnoremap k gk
 " シンタックスハイライトの有効化
 syntax enable
 
-
 " Tab系
 " 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
@@ -53,8 +62,8 @@ set shiftwidth=2
 set softtabstop=2
 "python用
 setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
-
-
+" 残り五行からスクロール開始
+set scrolloff=5
 
 " 検索系
 " 検索文字列が小文字の場合は大文字小文字を区別なく検索する
@@ -69,10 +78,12 @@ set wrapscan
 set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
 "leaderキーはスペースキー(便利)
 "キーバインドコーナー
 let mapleader = "\<Space>"
 inoremap <silent> jj <ESC>
+"inoremap <silent> jk <ESC>
 nnoremap <silent> p p`]
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :q<CR>
@@ -84,7 +95,6 @@ nnoremap <leader>t :tabnew <CR>
 nnoremap <leader>b :b 
 nnoremap <leader>e :e 
 nnoremap <Tab><Tab> q:
-source ~/.vim/co.vim
 " 補完表示時のEnterで改行をしない
 inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
 
@@ -93,13 +103,24 @@ inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
 for k in split("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_",'\zs')
   exec "imap <expr> " . k . " pumvisible() ? '" . k . "' : '" . k . "\<C-X>\<C-P>\<C-N>'"
 endfor
+
+" 括弧の補完"
 inoremap { {}<LEFT>
 inoremap [ []<LEFT>
 inoremap ( ()<LEFT>
 inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
+" yiwなどを使いやすく"
+onoremap 8 i(
+onoremap 2 i"
+onoremap 7 i'
+onoremap @ i`
+onoremap [ i[
+onoremap { i{
 ""inoremap < <><LEFT>
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+filetype on
+filetype indent on
 filetype plugin on
 nnoremap <leader>n :Ex.<CR>
 ""nnoremap <silent>bb :b#<CR>
@@ -119,8 +140,6 @@ augroup SpaceDelete
   ""autocmd BufWritePre * :%s/\s\+$//ge
 augroup END
 
-set scrolloff=5
-
 "検索語が画面の真ん中に来るようにする
 "nmap n nzz 
 "nmap N Nzz 
@@ -130,3 +149,6 @@ set scrolloff=5
 "nmap g# g#zz
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 au BufNewFile,BufRead * match ZenkakuSpace /　/
+
+" 別ファイル読み込み
+source ~/.vim/co.vim

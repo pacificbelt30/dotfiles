@@ -17,7 +17,7 @@ endfunction
 
 augroup myDenite
   nnoremap <silent><Space>d :Denite file/rec<CR>
-  nnoremap <silent><Space>b :Denite buffer<CR>
+  "nnoremap <silent><Space>b :Denite buffer<CR>
   nnoremap <silent><Space>g :Denite grep<CR>
 augroup END
 

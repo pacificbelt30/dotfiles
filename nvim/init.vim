@@ -1,6 +1,10 @@
 "setting
 "文字コードをUFT-8に設定
 set fenc=utf-8
+set encoding=utf-8
+scriptencoding utf-8
+" 改行コードの判別
+set fileformat=unix
 set nobackup
 set noswapfile
 " 他の場所で上書きされたとき自動で読む
@@ -61,6 +65,7 @@ nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " 残りn行でスクロール開始
 set scrolloff=5
 
+" 全角スペース表示設定
 highlight ZenkakuSpace cterm=underline ctermfg=lightblue guibg=#666666
 au BufNewFile,BufRead * match ZenkakuSpace /　/
 
@@ -105,8 +110,8 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " ファイルタイプを
 Plug 'Shougo/context_filetype.vim'
 " スニペット
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+"Plug 'Shougo/neosnippet.vim'
+"Plug 'Shougo/neosnippet-snippets'
 " include
 "Plug 'Shougo/neoinclude.vim'
 "Plug 'autozimu/LanguageClient-neovim'
@@ -137,12 +142,27 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 " ウィンドウリサイズ
 Plug 'simeji/winresizer'
+" tex
+"Plug 'lervag/vimtex'
+" snippets
+Plug 'honza/vim-snippets'
+"fzf ファジーファインダー
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+" fzf,coc連携 :CocFzfList
+Plug 'antoinemadec/coc-fzf'
 " テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 call plug#end()
 "プラグイン部分の記述 end"
+
+" ファイルタイプを識別する
+filetype on
 filetype plugin on
-filetype plugin indent on
+filetype indent on
+let g:tex_flavor = 'latex' " 全.texファイルをlatexファイルとして認識させる
 "autocmd VimEnter * execute 'NERDTree'
 "autocmd FileType c,cpp,h ClangFormatAutoEnable
 "let g:rustfmt_autosave = 1
@@ -164,12 +184,16 @@ function MakeCquery()
   echo system('echo ''[{"directory": "/home/kutimoti/contest","command": "/usr/bin/c++  ' . temp . ' -std=c++11","file": "' . temp . '"}]'' > compile_commands.json')
 endfunction
 
-autocmd FileType c setlocal foldmethod=marker foldcolumn=3
-autocmd FileType cpp setlocal foldmethod=marker foldcolumn=3
+"autocmd FileType c setlocal foldmethod=marker foldcolumn=3
+"autocmd FileType cpp setlocal foldmethod=marker foldcolumn=3
+
+" keybinding
 set tags
 let mapleader = "\<Space>"
 inoremap <silent> jj <ESC>
 tnoremap <silent> jj <C-\><C-n>
+inoremap <silent> jk <ESC>
+tnoremap <silent> jk <C-\><C-n>
 nnoremap <silent> p p`]
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :q<CR>
@@ -185,6 +209,30 @@ nnoremap <Tab><Tab> q:
 "nnoremap <leader>n :Ex.<CR>
 "nnoremap <silent>bb :b#<CR>
 "nnoremap <silent>bd :bd<CR>
+" スペース二回でコマンドラインの入力消去 (ctrl+uのショートカットが有効の場合)
+tnoremap <Space><Space> <C-u>
+"オペレータ待機
+onoremap 8 i(
+onoremap 2 i"
+onoremap 7 i'
+onoremap @ i`
+onoremap [ i[
+onoremap { i{
+
+" インサートモードでjを打ったときの待ち時間を短縮(ターミナル入力も)
+augroup timeout
+  autocmd!
+  autocmd InsertEnter * set timeoutlen=300
+  autocmd InsertLeave * set timeoutlen=1000
+  autocmd TermEnter * set timeoutlen=300
+  autocmd TermLeave * set timeoutlen=1000
+augroup END
+
+" undo 永続化
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
 
 "設定読み込み
 "source $HOME/.config/nvim/plugins/LanguageClient-neovim.rc.vim
@@ -196,10 +244,38 @@ source $HOME/.config/nvim/plugins/coc.rc.vim
 source $HOME/.config/nvim/plugins/denite.rc.vim
 source $HOME/.config/nvim/plugins/easymotion.rc.vim
 source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
+source $HOME/.config/nvim/plugins/fzf.rc.vim
+"lua require('telescoperc')
 
 "foldmethod"
 set foldmethod=indent
 set foldnestmax=1
+
+"help 日本語化
 set helplang=ja
 
+" 設定ファイルを開くコマンド及び関数
+function! OpenConf()
+  :e ~/.config/nvim/init.vim
+endfunctio
+command! OC call OpenConf()
+
+
+" test script
 source $HOME/work/float_term/float_term.vim
+let test=0
+augroup test
+  autocmd filetype vim let test += 1
+augroup END
+" Find files using Telescope command-line sugar.
+"nnoremap <leader>ff <cmd>Telescope find_files<cr>
+"nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+"nnoremap <leader>fb <cmd>Telescope buffers<cr>
+"nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+"
+" Using Lua functions
+"nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+"nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+"nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+"nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+"
