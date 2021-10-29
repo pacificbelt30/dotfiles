@@ -36,7 +36,6 @@ nnoremap j gj
 nnoremap k gk
 vnoremap j gj
 vnoremap k gk
-"syntax enable
 
 " ウィンドウ移動
 "nnoremap <C-w> :wincmd w<CR>
@@ -76,6 +75,7 @@ au BufNewFile,BufRead * match ZenkakuSpace /　/
 set clipboard+=unnamedplus
 
 "colorscheme"
+syntax enable
 set background=dark
 "colorscheme tender
 "colorscheme jellybeans
@@ -85,6 +85,13 @@ set background=dark
 colorscheme gruvbox
 set t_Co=256
 set termguicolors
+
+"背景透過
+"highlight Normal ctermbg=none
+"highlight NonText ctermbg=none
+"highlight LineNr ctermbg=none
+"highlight Folded ctermbg=none
+"highlight EndOfBuffer ctermbg=none 
 
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
@@ -116,7 +123,9 @@ Plug 'Shougo/context_filetype.vim'
 "Plug 'Shougo/neoinclude.vim'
 "Plug 'autozimu/LanguageClient-neovim'
 " コメントアウト
-Plug 'pacificbelt30/COOC.vim'
+"Plug 'pacificbelt30/COOC.vim'
+Plug 'pacificbelt30/easyCO.vim'
+"Plug '~/work/easyCO.vim'
 " タグ生成 F2
 Plug 'preservim/tagbar'
 " powerline的なやつになる
@@ -153,8 +162,18 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " fzf,coc連携 :CocFzfList
 Plug 'antoinemadec/coc-fzf'
+" undo tree
+Plug 'mbbill/undotree'
+" comfortable scroll 別になくていい
+Plug 'psliwka/vim-smoothie'
+" Plug 'terryma/vim-smooth-scroll'
+" インデント可視化
+Plug 'Yggdroot/indentLine'
 " テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'joshdick/onedark.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'jacoborus/tender.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'nanotech/jellybeans.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 call plug#end()
 "プラグイン部分の記述 end"
 
@@ -168,13 +187,6 @@ let g:tex_flavor = 'latex' " 全.texファイルをlatexファイルとして認
 "let g:rustfmt_autosave = 1
 "autocmd VimEnter * execute '<C-w><C-w>'
 "map <C-n> :NERDTreeToggle<CR>
-
-"背景透過
-"highlight Normal ctermbg=none
-"highlight NonText ctermbg=none
-"highlight LineNr ctermbg=none
-"highlight Folded ctermbg=none
-"highlight EndOfBuffer ctermbg=none 
 
 "inoremap {<Enter> {}<Left><CR><ESC><S-o>
 "inoremap [<Enter> []<Left><CR><ESC><S-o>
@@ -205,6 +217,8 @@ nnoremap <leader>t :tabnew <CR>
 "nnoremap <leader>b :b  
 nnoremap <leader>e :e  
 nnoremap <Tab><Tab> q:
+" visualmodeでvを押すとカーソル以下の単語選択
+vnoremap v iw
 "source ~/.vim/co.vim
 "nnoremap <leader>n :Ex.<CR>
 "nnoremap <silent>bb :b#<CR>
@@ -245,6 +259,7 @@ source $HOME/.config/nvim/plugins/denite.rc.vim
 source $HOME/.config/nvim/plugins/easymotion.rc.vim
 source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
 source $HOME/.config/nvim/plugins/fzf.rc.vim
+source $HOME/.config/nvim/plugins/indentLine.rc.vim
 "lua require('telescoperc')
 
 "foldmethod"
@@ -279,3 +294,9 @@ augroup END
 "nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 "nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 "
+"substitute
+"let val = "\\\\\\\\"
+"let test = substitute(val,"\\","/","g")
+"echo test
+
+"let g:COList = [{"coMozi":"\\\\","extention":["tex","c","cpp"]},{"coMozi":"\#","extention":["py"]}]

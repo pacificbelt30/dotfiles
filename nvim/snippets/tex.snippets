@@ -1,0 +1,48 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+snippet gazou figure
+\begin{figure*}[htbp]
+  \centering
+  \includegraphics[keepaspectratio,scale=1.0]{$1}
+  \caption{$2}
+  \label{$3}
+\end{figure*}
+
+snippet hyo table
+\begin{table*}[htbp]
+  \centering
+  \caption{$1}
+  \label{$2}
+  \begin{tabular}{$3}
+    \hline
+    $4
+  \end{tabular}
+\end{table*}
+
+snippet sankou reference
+\begin{thebibliography}{99}
+  \bibitem{$1} 
+\end{thebibliography}

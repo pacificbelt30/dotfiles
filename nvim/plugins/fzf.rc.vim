@@ -47,7 +47,6 @@ augroup _fzf_
   "autocmd FileType fzf tnoremap <buffer> <Esc> <C-\><C-n>
   "autocmd FileType fzf tnoremap <buffer> jj <C-\><C-n>
   autocmd FileType fzf tnoremap <buffer> <Space><Space> <C-u>
-  "autocmd FileType fzf tnoremap jj <C-\><C-n>:q<CR> | autocmd BufLeave <buffer> tnoremap jj <C-\><C-n>
   "autocmd FileType fzf set timeoutlen=200
   "autocmd FileType fzf tnoremap <buffer> jj <C-\><C-n>:q<CR>
 augroup END

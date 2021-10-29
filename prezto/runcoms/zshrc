@@ -32,8 +32,8 @@ QT_IM_MODULE=fcitx
 
 #alias
 alias textemp='cp ~/Documents/latextemp.tex `pwd`/report.tex'
-alias ls='exa'
-alias lt='exa --tree -L 3'
+alias ls='exa --icons'
+alias lt='exa --icons --tree -L 3'
 bindkey -e
 
 export PATH=$HOME/.local/bin:$PATH
@@ -46,3 +46,4 @@ chpwd(){
     ls
   fi
 }
+# eval "$(starship init zsh)"
