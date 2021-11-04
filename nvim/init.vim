@@ -57,8 +57,8 @@ set smartcase
 set incsearch
 set wrapscan
 " 検索文字のハイライト
-"set hlsearch
-set nohlsearch
+set hlsearch
+"set nohlsearch
 set inccommand=nosplit
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " 残りn行でスクロール開始
@@ -123,7 +123,6 @@ Plug 'Shougo/context_filetype.vim'
 "Plug 'Shougo/neoinclude.vim'
 "Plug 'autozimu/LanguageClient-neovim'
 " コメントアウト
-"Plug 'pacificbelt30/COOC.vim'
 Plug 'pacificbelt30/easyCO.vim'
 "Plug '~/work/easyCO.vim'
 " タグ生成 F2
@@ -182,6 +181,7 @@ filetype on
 filetype plugin on
 filetype indent on
 let g:tex_flavor = 'latex' " 全.texファイルをlatexファイルとして認識させる
+" NERDTree設定
 "autocmd VimEnter * execute 'NERDTree'
 "autocmd FileType c,cpp,h ClangFormatAutoEnable
 "let g:rustfmt_autosave = 1
@@ -200,12 +200,15 @@ endfunction
 "autocmd FileType cpp setlocal foldmethod=marker foldcolumn=3
 
 " keybinding
+" 割り当て方として 連打したくなるようなやつ -> <C,Shift,Alt>+α , そうじゃないやつ -> [a-z,A-Z].*
 set tags
 let mapleader = "\<Space>"
 inoremap <silent> jj <ESC>
 tnoremap <silent> jj <C-\><C-n>
 inoremap <silent> jk <ESC>
 tnoremap <silent> jk <C-\><C-n>
+"cnoremap <silent> jj <ESC>
+"cnoremap <silent> jk <ESC>
 nnoremap <silent> p p`]
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :q<CR>
@@ -219,12 +222,12 @@ nnoremap <leader>e :e
 nnoremap <Tab><Tab> q:
 " visualmodeでvを押すとカーソル以下の単語選択
 vnoremap v iw
-"source ~/.vim/co.vim
 "nnoremap <leader>n :Ex.<CR>
 "nnoremap <silent>bb :b#<CR>
 "nnoremap <silent>bd :bd<CR>
 " スペース二回でコマンドラインの入力消去 (ctrl+uのショートカットが有効の場合)
 tnoremap <Space><Space> <C-u>
+cnoremap <Space><Space> <C-u>
 "オペレータ待機
 onoremap 8 i(
 onoremap 2 i"
@@ -232,6 +235,21 @@ onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
 onoremap { i{
+nmap <CR> <Nop>
+nnoremap <CR> o<Esc> " ノーマルモードでエンターを押すと改行できる
+nnoremap gb g; " 変更履歴を戻る 注：変更履歴はファイル間のジャンプはなし?
+nnoremap gf g. " 変更履歴を進める
+nnoremap <C-b> <C-o> " ジャンプ履歴を戻る 注：ジャンプ履歴はファイルを超えても飛んでいく
+nnoremap <C-f> <C-i> " ジャンプ履歴を進める <C-i>から始まる何かにあたってる
+nmap H <C-u>
+nmap L <C-d>
+
+
+" カレントディレクトリ変更
+" <C-p>はkと同じ
+nmap <C-p> <Nop>
+nnoremap <C-p> :cd:%:h "バッファまるごと開いてるファイルのディレクトリへ
+"nnoremap <C-p> :lcd:%:h " 現在のバッファのみディレクトリを変更
 
 " インサートモードでjを打ったときの待ち時間を短縮(ターミナル入力も)
 augroup timeout
@@ -240,6 +258,8 @@ augroup timeout
   autocmd InsertLeave * set timeoutlen=1000
   autocmd TermEnter * set timeoutlen=300
   autocmd TermLeave * set timeoutlen=1000
+  autocmd CmdlineEnter * set timeoutlen=300
+  autocmd CmdlineLeave * set timeoutlen=1000
 augroup END
 
 " undo 永続化
@@ -249,6 +269,7 @@ if has('persistent_undo')
 endif
 
 "設定読み込み
+"source ~/.vim/co.vim
 "source $HOME/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 "source $HOME/.config/nvim/plugins/deoplete.rc.vim
 source $HOME/.config/nvim/plugins/neosnippet.rc.vim

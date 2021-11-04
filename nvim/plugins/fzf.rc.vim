@@ -29,18 +29,31 @@ command! -bang -nargs=* BLines
     \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(<q-args>).' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
     " \   fzf#vim#with_preview({'options': '--layout reverse  --with-nth=-1.. --delimiter="/"'}, 'right:50%'))
 
+" カーソル以下の単語取得
+function! SelectUnderWord()
+  let searchWord = expand("<cword>")
+  return searchWord
+endfunction
+" カーソル以下の単語でfzf grep
+function! AsteriskGrep()
+  call fzf#vim#grep(
+  \   'rg --with-filename --column --line-number --no-heading --smart-case . '.fnameescape(expand('%:p')), 1,
+  \   fzf#vim#with_preview({'options': '--layout reverse --query '.shellescape(SelectUnderWord() . ' ').' --with-nth=4.. --delimiter=":"'}, 'right:50%'))
+endfunction
+
 " 
 "nnoremap <leader>n :Files<CR>
 nnoremap <leader>n :ProjectFiles<CR>
 nnoremap <leader>r :Rg 
 nnoremap <leader>b :Buffers<CR>
 nmap / :BLines<CR>
+nmap * :call AsteriskGrep()<CR>
 nnoremap <leader>e :CocFzfList diagnostics<CR>
 
 " fzfターミナル上でのキーマップ
 augroup _fzf_
   autocmd!
-  autocmd FileType fzf nnoremap <buffer> q :q<CR>
+  autocmd FileType fzf nnoremap <buffer> q :q<CR> 
   "autocmd * <buffer> autocmd FileType fzf tnoremap <Esc> <C-\><C-n>:q<CR> 
   autocmd FileType fzf tnoremap <buffer> <Esc> <C-\><C-n>:q<CR>
   autocmd FileType fzf tnoremap <buffer> jj <C-\><C-n>:q<CR>
