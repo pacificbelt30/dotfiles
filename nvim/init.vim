@@ -4,37 +4,10 @@ source $HOME/.config/nvim/rc/options.rc.vim
 "Plug
 source $HOME/.config/nvim/rc/plug.rc.vim
 
-" ファイルタイプを識別する
-filetype on
-filetype plugin on
-filetype indent on
-let g:tex_flavor = 'latex' " 全.texファイルをlatexファイルとして認識させる
-" NERDTree設定
-"autocmd VimEnter * execute 'NERDTree'
-"autocmd FileType c,cpp,h ClangFormatAutoEnable
-"let g:rustfmt_autosave = 1
-"autocmd VimEnter * execute '<C-w><C-w>'
-"map <C-n> :NERDTreeToggle<CR>
-
-"inoremap {<Enter> {}<Left><CR><ESC><S-o>
-"inoremap [<Enter> []<Left><CR><ESC><S-o>
-"inoremap (<Enter> ()<Left><CR><ESC><S-o>
-function MakeCquery()
-  let temp = expand('%:p')
-  echo system('echo ''[{"directory": "/home/kutimoti/contest","command": "/usr/bin/c++  ' . temp . ' -std=c++11","file": "' . temp . '"}]'' > compile_commands.json')
-endfunction
-
-
-" keybinding
+"keybinding
 source $HOME/.config/nvim/rc/keymappings.rc.vim
 
-" undo 永続化
-if has('persistent_undo')
-  set undodir=~/.vim/undo
-  set undofile
-endif
-
-"設定読み込み
+"プラグインごとの設定読み込み
 "source ~/.vim/co.vim
 "source $HOME/.config/nvim/plugins/LanguageClient-neovim.rc.vim
 "source $HOME/.config/nvim/plugins/deoplete.rc.vim
@@ -48,13 +21,6 @@ source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
 source $HOME/.config/nvim/plugins/fzf.rc.vim
 source $HOME/.config/nvim/plugins/indentLine.rc.vim
 "lua require('telescoperc')
-
-" 設定ファイルを開くコマンド及び関数
-function! OpenConf()
-  :e ~/.config/nvim/init.vim
-  :cd %:h
-endfunctio
-command! OC call OpenConf()
 
 " test script
 source $HOME/work/float_term/float_term.vim

@@ -1,6 +1,4 @@
-
 " 割り当て方として 連打したくなるようなやつ -> <C,Shift,Alt>+α , そうじゃないやつ -> [a-z,A-Z].*
-set tags
 let mapleader = "\<Space>"
 inoremap <silent> jj <ESC>
 tnoremap <silent> jj <C-\><C-n>
@@ -10,10 +8,21 @@ tnoremap <silent> jk <C-\><C-n>
 "cnoremap <silent> jk <ESC>
 nnoremap <silent> p p`]
 
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
+
 nnoremap <silent> <C-j> :bprev<CR>
 nnoremap <silent> <C-k> :bnext<CR>
 tnoremap <Esc> <C-\><C-n>
 tnoremap <a> <i>
+
+nnoremap j gj
+nnoremap k gk
+vnoremap j gj
+vnoremap k gk
+
+" ウィンドウ移動
+"nnoremap <C-w> :wincmd w<CR>
+nnoremap w :wincmd w<CR>
 
 nnoremap <leader>w :w <CR>
 nnoremap <leader>q :q<CR>
@@ -49,6 +58,9 @@ nnoremap <C-f> <C-i> " ジャンプ履歴を進める <C-i>から始まる何か
 nmap H <C-u>
 nmap L <C-d>
 
+"inoremap {<Enter> {}<Left><CR><ESC><S-o>
+"inoremap [<Enter> []<Left><CR><ESC><S-o>
+"inoremap (<Enter> ()<Left><CR><ESC><S-o>
 
 " カレントディレクトリ変更
 " <C-p>はkと同じ
@@ -66,3 +78,4 @@ augroup timeout
   autocmd CmdlineEnter * set timeoutlen=300
   autocmd CmdlineLeave * set timeoutlen=1000
 augroup END
+

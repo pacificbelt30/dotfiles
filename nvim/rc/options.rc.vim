@@ -31,15 +31,8 @@ set virtualedit=onemore
 set showmatch
 " ステータスラインを常に表示
 set laststatus=2 
-
-nnoremap j gj
-nnoremap k gk
-vnoremap j gj
-vnoremap k gk
-
-" ウィンドウ移動
-"nnoremap <C-w> :wincmd w<CR>
-nnoremap w :wincmd w<CR>
+" tagsファイルを見る
+set tags
 
 " Tab系
 set list listchars=tab:\▸\-
@@ -60,7 +53,6 @@ set wrapscan
 set hlsearch
 "set nohlsearch
 set inccommand=nosplit
-nmap <Esc><Esc> :nohlsearch<CR><Esc>
 " 残りn行でスクロール開始
 set scrolloff=5
 
@@ -96,7 +88,6 @@ colorscheme gruvbox
 set t_Co=256
 set termguicolors
 
-
 if &compatible
  set nocompatible
 endif
@@ -109,3 +100,28 @@ set foldnestmax=1
 
 "help 日本語化
 set helplang=ja
+
+" ファイルタイプを識別する
+filetype on
+filetype plugin on
+filetype indent on
+let g:tex_flavor = 'latex' " 全.texファイルをlatexファイルとして認識させる
+" NERDTree設定
+"autocmd VimEnter * execute 'NERDTree'
+"autocmd FileType c,cpp,h ClangFormatAutoEnable
+"let g:rustfmt_autosave = 1
+"autocmd VimEnter * execute '<C-w><C-w>'
+"map <C-n> :NERDTreeToggle<CR>
+
+" undo 永続化
+if has('persistent_undo')
+  set undodir=~/.vim/undo
+  set undofile
+endif
+
+" 設定ファイルを開くコマンド及び関数
+function! OpenConf()
+  :e ~/.config/nvim/init.vim
+  :cd %:h
+endfunctio
+command! OC call OpenConf()
