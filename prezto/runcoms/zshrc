@@ -35,10 +35,15 @@ alias textemp='cp ~/Documents/latextemp.tex `pwd`/report.tex'
 alias ls='exa --icons'
 alias lt='exa --icons --tree -L 3'
 bindkey -e
+#bindkey -v
 
+# fzfの設定
 export PATH=$HOME/.local/bin:$PATH
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+
+# 外部読み込み
+source ~/work/myutil/sh/cd_git_root.sh
 
 # ls after cd
 chpwd(){
@@ -47,3 +52,4 @@ chpwd(){
   fi
 }
 # eval "$(starship init zsh)"
+#

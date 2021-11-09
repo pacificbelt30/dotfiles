@@ -40,6 +40,7 @@ ln -snf `pwd`/nvim/init.vim $HOME/.config/nvim/init.vim
 ln -snf `pwd`/nvim/plugins $HOME/.config/nvim/plugins
 ln -snf `pwd`/nvim/snippets $HOME/.config/nvim/snippets
 ln -snf `pwd`/nvim/ftplugin $HOME/.config/nvim/ftplugin
+ln -snf `pwd`/nvim/rc $HOME/.config/nvim/rc
 ln -snf `pwd`/rofi/config $HOME/.config/rofi/config
 ln -snf `pwd`/rofi/config.rasi $HOME/.config/rofi/config.rasi
 ln -snf `pwd`/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
