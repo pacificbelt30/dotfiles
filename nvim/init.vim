@@ -7,6 +7,9 @@ source $HOME/.config/nvim/rc/plug.rc.vim
 "keybinding
 source $HOME/.config/nvim/rc/keymappings.rc.vim
 
+"myTextObject
+source $HOME/.config/nvim/rc/myTextObjects.rc.vim
+
 "プラグインごとの設定読み込み
 "source ~/.vim/co.vim
 "source $HOME/.config/nvim/plugins/LanguageClient-neovim.rc.vim
@@ -46,12 +49,4 @@ augroup END
 "echo test
 
 "let g:COList = [{"coMozi":"\\\\","extention":["tex","c","cpp"]},{"coMozi":"\#","extention":["py"]}]
-
-call textobj#user#plugin('tex', {
-\   'environment': {
-\     'pattern': ['\\begin{.*}.*\n', '\\end{.*}'],
-\     'select-a': 'ae',
-\     'select-i': 'ie',
-\   },
-\ })
 

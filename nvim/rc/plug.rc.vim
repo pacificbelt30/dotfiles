@@ -48,6 +48,8 @@ Plug 'tpope/vim-repeat'
 Plug 'junegunn/goyo.vim'
 " ウィンドウリサイズ
 Plug 'simeji/winresizer'
+" vim plugin help generator
+Plug 'LeafCage/vimhelpgenerator'
 " tex
 "Plug 'lervag/vimtex'
 " snippets

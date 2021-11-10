@@ -121,7 +121,8 @@ endif
 
 " 設定ファイルを開くコマンド及び関数
 function! OpenConf()
-  :e ~/.config/nvim/init.vim
+  ":e ~/.config/nvim/init.vim
+  :e ~/dotfiles/nvim/init.vim
   :cd %:h
 endfunctio
 command! OC call OpenConf()

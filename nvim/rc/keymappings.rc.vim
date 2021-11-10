@@ -51,8 +51,8 @@ onoremap [ i[
 onoremap { i{
 nmap <CR> <Nop>
 nnoremap <CR> o<Esc> " ノーマルモードでエンターを押すと改行できる
-nnoremap gb g; " 変更履歴を戻る 注：変更履歴はファイル間のジャンプはなし?
-nnoremap gf g. " 変更履歴を進める
+"nnoremap gb g; " 変更履歴を戻る 注：変更履歴はファイル間のジャンプはなし?
+"nnoremap gf g. " 変更履歴を進める gfはカーソル下のファイルを開く
 nnoremap <C-b> <C-o> " ジャンプ履歴を戻る 注：ジャンプ履歴はファイルを超えても飛んでいく
 nnoremap <C-f> <C-i> " ジャンプ履歴を進める <C-i>から始まる何かにあたってる
 nmap H <C-u>
