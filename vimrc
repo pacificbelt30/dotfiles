@@ -152,3 +152,10 @@ au BufNewFile,BufRead * match ZenkakuSpace /　/
 
 " 別ファイル読み込み
 source ~/.vim/co.vim
+
+" plugin
+" has_network == 1のとき読み込み
+let has_network = 0
+if has_network == 1
+  "Plug ""
+endif

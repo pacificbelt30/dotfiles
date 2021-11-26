@@ -49,6 +49,7 @@ onoremap 7 i'
 onoremap @ i`
 onoremap [ i[
 onoremap { i{
+onoremap , i<
 nmap <CR> <Nop>
 nnoremap <CR> o<Esc> " ノーマルモードでエンターを押すと改行できる
 "nnoremap gb g; " 変更履歴を戻る 注：変更履歴はファイル間のジャンプはなし?

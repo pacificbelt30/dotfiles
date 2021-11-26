@@ -2,7 +2,10 @@
 source $HOME/.config/nvim/rc/options.rc.vim
 
 "Plug
-source $HOME/.config/nvim/rc/plug.rc.vim
+let has_network = 1
+if has_network == 1
+  source $HOME/.config/nvim/rc/plug.rc.vim
+endif
 
 "keybinding
 source $HOME/.config/nvim/rc/keymappings.rc.vim

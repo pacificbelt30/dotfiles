@@ -197,7 +197,7 @@ exec --no-startup-id volumeicon
 exec --no-startup-id fcitx
 exec --no-startup-id "synclient TapButton1=1"
 exec --no-startup-id "pulseeffects --gapplication-service"
-
+#exec --no-startup-id "sleep 1; xset s off"
 
 # Examples
 for_window [class="^.*"] border pixel 2 
@@ -210,7 +210,7 @@ exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id ~/.screenlayout/monitor.sh
 exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # exec --no-startup-id xset s 480 dpms 600 600 600
-exec --no-startup-id xset s 1800 1800
+exec_always --no-startup-id "xset s 1800 1800"
 
 ######################################
 # color settings for bar and windows #

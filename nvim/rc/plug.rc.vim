@@ -23,6 +23,8 @@ Plug 'Shougo/context_filetype.vim'
 " コメントアウト
 "Plug 'pacificbelt30/easyCO.vim'
 Plug '~/work/easyCO.vim'
+" アスタリスク拡張
+Plug '~/work/exasterisk.vim'
 " タグ生成 F2
 Plug 'preservim/tagbar'
 " powerline的なやつになる
@@ -68,6 +70,8 @@ Plug 'psliwka/vim-smoothie'
 " Plug 'terryma/vim-smooth-scroll'
 " インデント可視化
 Plug 'Yggdroot/indentLine'
+" カーソル下の単語にアンダーライン
+Plug 'itchyny/vim-cursorword'
 " テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 Plug 'joshdick/onedark.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
