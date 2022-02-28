@@ -88,6 +88,7 @@ done
 # ln -snf `pwd`/prezto/runcoms/zshrc $HOME/.zprezto/runcoms/zshrc
 ln -snf `pwd`/prezto/runcoms/myzshrc $HOME/.zprezto/runcoms/myzshrc
 
+# myzshrcをzshrcで読み込むように追加
 echo "source $HOME/.zprezto/runcoms/myzshrc" >> $HOME/.zprezto/runcoms/zshrc
 
 
