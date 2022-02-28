@@ -8,6 +8,7 @@ rofi/
 xfce4/
 prezto/runcoms/zshrc
 prezto/runcoms/zlogout
+prezto/runcoms/zlogin
 prezto/runcoms/zpreztorc
 prezto/runcoms/zprofile
 prezto/runcoms/zshenv
