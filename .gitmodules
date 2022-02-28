@@ -1,0 +1,3 @@
+[submodule "i3wm-setup"]
+	path = i3wm-setup
+	url = https://github.com/endeavouros-team/endeavouros-i3wm-setup/

@@ -1,1 +1,11 @@
 ./p10k.zsh
+dunst/
+compton/
+rofi/
+xfce4/
+prezto/runcoms/zshrc
+prezto/runcoms/zlogout
+prezto/runcoms/zpreztorc
+prezto/runcoms/zprofile
+prezto/runcoms/zshenv
+

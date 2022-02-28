@@ -1,0 +1,35 @@
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+autoload -Uz promptinit
+promptinit
+prompt powerlevel10k
+QT_IM_MODULE=fcitx
+
+#alias
+alias textemp='cp ~/Documents/latextemp.tex `pwd`/report.tex'
+alias ls='exa --icons'
+alias lt='exa --icons --tree -L 3'
+alias gadd='git add'
+alias gcommit='git commit -m '
+alias gpush='git push'
+bindkey -e
+#bindkey -v
+
+# fzfの設定
+export PATH=$HOME/.local/bin:$PATH
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# 外部読み込み
+source ~/work/myutil/sh/cd_git_root.sh
+
+#
+export EDITOR=nvim
+
+# ls after cd
+chpwd(){
+  if [[ $(pwd) != $HOME ]]; then;
+    ls
+  fi
+}
+#eval "$(starship init zsh)"
+#

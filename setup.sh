@@ -1,7 +1,9 @@
 #!/bin/zsh
+# vim,i3その他諸々の設定を配置するシェルスクリプト
+
 #Plugインストール
 #cd ~/dotfiles
-chsh -s $(which zsh)
+#chsh -s $(which zsh)
 zsh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
@@ -30,7 +32,7 @@ makedir .config/nvim/colors
 ln -snf `pwd`/vimrc $HOME/.vimrc
 ln -snf `pwd`/co.vim $HOME/.vim/co.vim
 ln -snf `pwd`/tmux.conf $HOME/.tmux.conf
-ln -snf `pwd`/p10k.zsh $HOME/.p10k.zsh
+#ln -snf `pwd`/p10k.zsh $HOME/.p10k.zsh
 ln -snf `pwd`/latexmkrc $HOME/.latexmkrc
 
 #$HOME/.config 以下の設定ファイル
@@ -53,10 +55,21 @@ ln -snf `pwd`/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
 ln -snf `pwd`/i3/scripts $HOME/.config/i3/config/scripts
 ln -snf `pwd`/i3status/config $HOME/.config/i3status/config
 ln -snf `pwd`/terminator/config $HOME/.config/terminator/config
+ln -snf `pwd`/compton/picom.conf $HOME/.config/compton/picom.conf
 ln -snf `pwd`/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
 ln -snf `pwd`/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
-ln -snf `pwd`/compton/picom.conf $HOME/.config/compton/picom.conf
 ln -snf `pwd`/dunst/dunstrc $HOME/.config/dunst/dunstrc
+
+#/i3wm-setup/.config から持ってくるやつ
+ln -snf `pwd`/i3wm-setup/.config/rofi/config.rasi $HOME/.config/rofi/config.rasi
+ln -snf `pwd`/i3wm-setup/.config/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
+ln -snf `pwd`/i3wm-setup/.config/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
+ln -snf `pwd`/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
+ln -snf `pwd`/i3wm-setup/.config/i3/scripts $HOME/.config/i3/config/scripts
+ln -snf `pwd`/i3wm-setup/.config/picom.conf $HOME/.config/compton/picom.conf
+ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
+ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
+ln -snf `pwd`/i3wm-setup/.config/dunst/dunstrc $HOME/.config/dunst/dunstrc
 
 
 #zprezto
@@ -67,11 +80,14 @@ for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do
   ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"
 done
 #prezto
-ln -snf `pwd`/prezto/runcoms/zlogin $HOME/.zprezto/runcoms/zlogin
-ln -snf `pwd`/prezto/runcoms/zlogout $HOME/.zprezto/runcoms/zlogout
-ln -snf `pwd`/prezto/runcoms/zpreztorc $HOME/.zprezto/runcoms/zpreztorc
-ln -snf `pwd`/prezto/runcoms/zprofile $HOME/.zprezto/runcoms/zprofile
-ln -snf `pwd`/prezto/runcoms/zshenv $HOME/.zprezto/runcoms/zshenv
-ln -snf `pwd`/prezto/runcoms/zshrc $HOME/.zprezto/runcoms/zshrc
+# ln -snf `pwd`/prezto/runcoms/zlogin $HOME/.zprezto/runcoms/zlogin
+# ln -snf `pwd`/prezto/runcoms/zlogout $HOME/.zprezto/runcoms/zlogout
+# ln -snf `pwd`/prezto/runcoms/zpreztorc $HOME/.zprezto/runcoms/zpreztorc
+# ln -snf `pwd`/prezto/runcoms/zprofile $HOME/.zprezto/runcoms/zprofile
+# ln -snf `pwd`/prezto/runcoms/zshenv $HOME/.zprezto/runcoms/zshenv
+# ln -snf `pwd`/prezto/runcoms/zshrc $HOME/.zprezto/runcoms/zshrc
+ln -snf `pwd`/prezto/runcoms/myzshrc $HOME/.zprezto/runcoms/myzshrc
+
+echo "source $HOME/.zprezto/runcoms/myzshrc" >> $HOME/.zprezto/runcoms/zshrc
 
 
