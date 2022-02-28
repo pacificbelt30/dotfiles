@@ -46,23 +46,23 @@ ln -snf `pwd`/nvim/rc $HOME/.config/nvim/rc
 ln -snf `pwd`/rofi/config $HOME/.config/rofi/config
 ln -snf `pwd`/rofi/config.rasi $HOME/.config/rofi/config.rasi
 ln -snf `pwd`/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
-#ln -snf `pwd`/i3/config $HOME/.config/i3/config
-ln -snf `pwd`/i3/config.endeavoros $HOME/.config/i3/config
-ln -snf `pwd`/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
-ln -snf `pwd`/i3/keybindings $HOME/.config/i3/keybindings
+ln -snf `pwd`/i3/config $HOME/.config/i3/config
+# ln -snf `pwd`/i3/config.endeavoros $HOME/.config/i3/config
+# ln -snf `pwd`/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
+# ln -snf `pwd`/i3/keybindings $HOME/.config/i3/keybindings
 #ln -snf `pwd`/i3/wallpaper.jpg $HOME/.config/i3/wallpaper.jpg
 ln -snf `pwd`/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
 ln -snf `pwd`/i3/scripts $HOME/.config/i3/config/scripts
 ln -snf `pwd`/i3status/config $HOME/.config/i3status/config
 ln -snf `pwd`/terminator/config $HOME/.config/terminator/config
-ln -snf `pwd`/compton/picom.conf $HOME/.config/compton/picom.conf
-ln -snf `pwd`/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
-ln -snf `pwd`/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
-ln -snf `pwd`/dunst/dunstrc $HOME/.config/dunst/dunstrc
+# ln -snf `pwd`/compton/picom.conf $HOME/.config/compton/picom.conf
+# ln -snf `pwd`/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
+# ln -snf `pwd`/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
+# ln -snf `pwd`/dunst/dunstrc $HOME/.config/dunst/dunstrc
 
 #/i3wm-setup/.config から持ってくるやつ
-ln -snf `pwd`/i3wm-setup/.config/rofi/config.rasi $HOME/.config/rofi/config.rasi
-ln -snf `pwd`/i3wm-setup/.config/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
+#ln -snf `pwd`/i3wm-setup/.config/rofi/config.rasi $HOME/.config/rofi/config.rasi
+#ln -snf `pwd`/i3wm-setup/.config/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
 ln -snf `pwd`/i3wm-setup/.config/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
 ln -snf `pwd`/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
 ln -snf `pwd`/i3wm-setup/.config/i3/scripts $HOME/.config/i3/config/scripts
