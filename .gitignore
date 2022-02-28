@@ -1,6 +1,6 @@
 ./p10k.zsh
 ./i3/config.endeavoros
-./i3/scripts/
+i3/scripts/
 ./i3/i3blocks.conf
 dunst/
 compton/
