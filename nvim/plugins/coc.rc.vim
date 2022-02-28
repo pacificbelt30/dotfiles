@@ -41,4 +41,4 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
 nnoremap <C-p> :CocList files<CR>
-let g:coc_global_extensions = ['coc-python', 'coc-texlab', 'coc-snippets', 'coc-explorer', 'coc-lists']
+let g:coc_global_extensions = ['coc-texlab', 'coc-snippets', 'coc-explorer', 'coc-lists']

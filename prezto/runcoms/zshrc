@@ -48,11 +48,14 @@ source /usr/share/fzf/completion.zsh
 # 外部読み込み
 source ~/work/myutil/sh/cd_git_root.sh
 
+#
+export EDITOR=nvim
+
 # ls after cd
 chpwd(){
   if [[ $(pwd) != $HOME ]]; then;
     ls
   fi
 }
-# eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 #
