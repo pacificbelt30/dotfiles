@@ -5,4 +5,4 @@ ARG UID=1000
 RUN useradd -m test -u ${UID}
 USER ${UID}
 WORKDIR /home/test
-RUN git clone https://github.com/pacificbelt30/dotfiles
+RUN git clone --recursive https://github.com/pacificbelt30/dotfiles
