@@ -322,7 +322,7 @@ bar {
   font pango:HackGen35Nerd Bold 10
   #status_command i3blocks
   #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-  status_command i3blocks -c ~/.config/i3/i3blockspowerline.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks_up.conf
   #position bottom 
   position bottom
   #position right
@@ -349,7 +349,7 @@ bar {
   font pango:HackGen35Nerd Bold 10
   #status_command i3blocks
   #status_command i3blocks -c ~/.config/i3/i3blocks.conf
-  status_command i3blocks -c ~/.config/i3/i3blocksbottom.conf
+  status_command i3blocks -c ~/.config/i3/i3blocks_bottom.conf
   #position bottom 
   position top
   #position right

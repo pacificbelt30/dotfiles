@@ -58,9 +58,10 @@ ln -snf `pwd`/rofi/config.rasi $HOME/.config/rofi/config.rasi
 ln -snf `pwd`/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
 ln -snf `pwd`/i3/config $HOME/.config/i3/config
 # ln -snf `pwd`/i3/config.endeavoros $HOME/.config/i3/config
-# ln -snf `pwd`/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
 # ln -snf `pwd`/i3/keybindings $HOME/.config/i3/keybindings
 #ln -snf `pwd`/i3/wallpaper.jpg $HOME/.config/i3/wallpaper.jpg
+ln -snf `pwd`/i3/i3blocks_up.conf $HOME/.config/i3/i3blocks_up.conf
+ln -snf `pwd`/i3/i3blocks_bottom.conf $HOME/.config/i3/i3blocks_bottom.conf
 ln -snf `pwd`/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
 ln -snf `pwd`/i3/scripts $HOME/.config/i3/scripts
 ln -snf `pwd`/i3status/config $HOME/.config/i3status/config
@@ -73,9 +74,9 @@ ln -snf `pwd`/terminator/config $HOME/.config/terminator/config
 #/i3wm-setup/.config から持ってくるやつ
 #ln -snf `pwd`/i3wm-setup/.config/rofi/config.rasi $HOME/.config/rofi/config.rasi
 #ln -snf `pwd`/i3wm-setup/.config/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
-ln -snf `pwd`/i3wm-setup/.config/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
+#ln -snf `pwd`/i3wm-setup/.config/i3/i3blocks.conf $HOME/.config/i3/i3blocks.conf
 ln -snf `pwd`/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
-ln -snf `pwd`/i3wm-setup/.config/i3/scripts $HOME/.config/i3/scripts
+#ln -snf `pwd`/i3wm-setup/.config/i3/scripts $HOME/.config/i3/scripts
 ln -snf `pwd`/i3wm-setup/.config/picom.conf $HOME/.config/compton/picom.conf
 ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
 ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
