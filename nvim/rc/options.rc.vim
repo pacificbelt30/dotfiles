@@ -66,14 +66,14 @@ au BufNewFile,BufRead * match ZenkakuSpace /　/
 "set clipboard=unnamed
 set clipboard+=unnamedplus
 
-"背景透過
+"背景透過 transparent
 augroup TransparentBG
   autocmd!
-  autocmd Colorscheme * highlight Normal ctermbg=none
-  autocmd Colorscheme * highlight NonText ctermbg=none
-  autocmd Colorscheme * highlight LineNr ctermbg=none
-  autocmd Colorscheme * highlight Folded ctermbg=none
-  autocmd Colorscheme * highlight EndOfBuffer ctermbg=none 
+  "autocmd Colorscheme * highlight Normal ctermbg=none guibg=none
+  "autocmd Colorscheme * highlight NonText ctermbg=none guibg=none
+  "autocmd Colorscheme * highlight LineNr ctermbg=none guibg=none
+  "autocmd Colorscheme * highlight Folded ctermbg=none guibg=none
+  "autocmd Colorscheme * highlight EndOfBuffer ctermbg=none guibg=none
 augroup END
 
 "colorscheme"

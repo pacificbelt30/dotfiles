@@ -1,18 +1,31 @@
 set -euCo pipefail
 
 function main() {
-  # 表示したい項目と実際に実行するコマンドを連想配列として定義する。
   local -Ar menu=(
-    ['Lock']='dm-tool lock'
+    # ['Lock']='dm-tool lock'
     ['Logout']='i3-msg exit'
     ['Poweroff']='systemctl poweroff'
     ['Reboot']='systemctl reboot'
+    ['Suspend']='systemctl suspend'
+  )
+
+  local -Ar menu_icon=(
+    ['Logout']='\0icon\x1fxfsm-logout\n'
+    ['Poweroff']='\0icon\x1fsystem-shutdown\n'
+    ['Reboot']='\0icon\x1fsystem-reboot\n'
+    ['Suspend']='\0icon\x1fsystem-suspend\n'
   )
 
   local -r IFS=$'\n'
-  # 引数があるなら$1に対応するコマンドを実行する。
-  # 引数がないなら連想配列のkeyを表示する。
-  [[ $# -ne 0 ]] && eval "${menu[$1]}" || echo "${!menu[*]}"
+  if [[ $# -ne 0 ]]; then
+    eval "${menu[$1]}"
+  else
+    for key in ${!menu[@]}; do
+      echo -ne "$key${menu_icon[$key]}"
+    done
+  fi
+
 }
 
 main $@
+

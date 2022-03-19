@@ -33,8 +33,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-#bindsym $mod+Return exec terminator
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec terminator
+#bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec konsole
 
 
@@ -42,20 +42,17 @@ bindsym $mod+Return exec xfce4-terminal
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-#bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-#bindsym $mod+d exec --no-startup-id "rofi -show drun"
-#bindsym Mod1+Tab exec --no-startup-id "rofi -show window"
-
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-#bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+focus_follows_mouse no
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
+# change focus (vim keybind)
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -64,10 +61,15 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+semicolon move right
+# move focused window(vim)
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -76,7 +78,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+# bindsym $mod+h split h
+bindsym $mod+n split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -87,7 +90,8 @@ bindsym $mod+f fullscreen toggle
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
+bindsym $mod+e layout splitv
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -101,29 +105,46 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# set workspace label
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10:"
+
+# bind program 
+assign [class="(?i)firefox"] $ws2
+# assign [class="(?i)terminator"] $ws1
+assign [class="(?i)discord"] $ws10
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-# bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-# bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
 
 bindsym $mod+u workspace next
 bindsym $mod+i workspace prev
@@ -137,29 +158,48 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+  # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+  # Pressing left will shrink the window’s width.
+  # Pressing right will grow the window’s width.
+  # Pressing up will shrink the window’s height.
+  # Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
+  bindsym l resize shrink height 10 px or 10 ppt
+  bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+  # same bindings, but for the arrow keys
+  bindsym Left resize shrink width 10 px or 10 ppt
+  bindsym Down resize grow height 10 px or 10 ppt
+  bindsym Up resize shrink height 10 px or 10 ppt
+  bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
 }
 
 bindsym $mod+r mode "resize"
+
+# swap window mode
+mode "swap" {
+  bindsym $mod+h focus left
+  bindsym $mod+j focus down
+  bindsym $mod+k focus up
+  bindsym $mod+l focus right
+
+  bindsym h focus left
+  bindsym j focus down
+  bindsym k focus up
+  bindsym l focus right
+  
+
+  bindsym Return swap container with mark swapee; unmark swapee; mode "default"
+  bindsym Escape unmark swapee; mode "default"
+}
+bindsym $mod+m mark --add swapee; mode "swap"
+
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -185,29 +225,33 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 # bindsym XF86AudioPause exec playerctl pause
 # bindsym XF86AudioNext exec playerctl next
 # bindsym XF86AudioPrev exec playerctl previous
-#
+
+bindsym F3 exec sh ~/.config/i3/scripts/discord_runorraise.sh firefox
+bindsym F2 exec sh ~/.config/i3/scripts/discord_runorraise.sh discord
+bindsym F1 workspace back_and_forth
+
+
+# autostart
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/wallpaper.jpg"
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/endeavouros-wallpaper.jpg"
 exec --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
-#exec --no-startup-id "compton --config ~/.config/compton/compton.conf -b"
-exec --no-startup-id picom -CGb
-#exec --no-startup-id "picom --config ~/.config/picom.conf -b"
-#exec --no-startup-id "picom --config ~/.config/compton/picom.conf -b"
-#exec --no-startup-id "picom -b"
+#exec_always --no-startup-id picom -CGb --experimental-backend
+exec_always --no-startup-id picom --config ~/.config/picom.conf -b -i 0.7 --experimental-backend
 exec --no-startup-id nm-applet
 exec --no-startup-id parcellite
-exec --no-startup-id volumeicon
+#exec --no-startup-id volumeicon
 exec --no-startup-id fcitx
-exec --no-startup-id "synclient TapButton1=1"
-exec --no-startup-id "pulseeffects --gapplication-service"
+#exec --no-startup-id "synclient TapButton1=1"
+#exec --no-startup-id "pulseeffects --gapplication-service"
 #exec --no-startup-id "sleep 1; xset s off"
+#exec_always --no-startup-id workspace $ws2; exec firefox; workspace back_and_forth
 
 # Examples
-for_window [class="^.*"] border pixel 2 
+for_window [class="^.*"] border pixel 0
 gaps inner 4
 gaps outer 4
 
-
+# autostart test
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id ~/.screenlayout/monitor.sh
@@ -221,39 +265,43 @@ exec_always --no-startup-id "xset s 1800 1800"
 ######################################
  
 # Define colors variables: 
-set $darkbluetrans	#08052be6
-set $darkblue		#08052b
-set $lightblue		#5294e2
-set $urgentred		#e53935
-set $white		#ffffff
-set $black		#000000
-set $purple		#e345ff
-set $darkgrey		#383c4a
-set $grey		#b0b5bd
-set $mediumgrey		#8b8b8b
-set $yellowbrown	#e1b700
+set $darkbluetrans #08052be6
+set $darkblue #08052b
+set $lightblue #5294e2
+set $urgentred #e53935
+set $white #ffffff
+set $black #000000
+set $purple #e345ff
+set $darkgrey #282c34
+#set $darkgrey #383c4a
+set $grey #b0b5bd
+set $mediumgrey #8b8b8b
+set $yellowbrown #e1b700
+set $green #98c379
 
 # define colors for windows:
-#class		        	border		bground		text		indicator	child_border
-client.focused		    $lightblue	$darkblue	$white		$purple		$mediumgrey
-client.unfocused	    $darkblue	$darkblue	$grey		$purple		$darkgrey
-client.focused_inactive	$darkblue	$darkblue	$grey		$purple		$black
-client.urgent		    $urgentred	$urgentred	$white		$purple		$yellowbrown
+#class border bground text indicator child_border
+client.focused $lightblue $darkblue $white $purple $mediumgrey
+client.unfocused $darkblue $darkblue $grey $purple $darkgrey
+client.focused_inactive $darkblue $darkblue $grey $purple $black
+client.urgent $urgentred $urgentred $white $purple $yellowbrown
 
 
 bindsym $mod+p exec /usr/local/bin/switch-audio-port
-bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
+# bindsym $mod+l exec ~/.config/i3/scripts/blur-lock.sh
 bindsym $mod+F1 exec xed ~/.config/i3/keybindings
 bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace.sh
 
 
+# bindsym $mod+Shift+e exec ~/.config/rofi/rofi_system.sh -p rofi -c
 
-bindsym $mod+Shift+e exec ~/.config/i3/scripts/shutdown_menu -p rofi -c
+#bindsym $mod+d exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
+#                -columns 2 -padding 50 -hide-scrollbar \
+#                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
+bindsym $mod+d exec rofi -show drun
+bindsym $mod+Shift+e exec rofi -show system
+bindsym Mod1+Tab exec rofi -show window
 
-bindsym $mod+d exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
-                -columns 2 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
-                
 bindsym F9 exec rofi -modi drun -show drun -display-drun "Apps : " -line-padding 4 \
                 -columns 2 -padding 30 -hide-scrollbar \
                 -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
@@ -268,33 +316,71 @@ bindsym F10 exec rofi -show window -display-window "Window : " -line-padding 4 \
                 -lines 10 -padding 50 -hide-scrollbar \
                 -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
 
-bindsym Mod1+Tab exec rofi -show window -display-window "Window : " -line-padding 4 \
-                -lines 10 -padding 50 -hide-scrollbar \
-                -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
-
 
 
 bar {
-  font pango:Noto Sans Regular 10, FontAwesome 10
+  font pango:HackGen35Nerd Bold 10
   #status_command i3blocks
-  status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blockspowerline.conf
   #position bottom 
-  position top
+  position bottom
   #position right
   #i3bar_command i3bar --transparency
   tray_output primary
   tray_padding 0
+  mode hide
   colors {
     separator          $purple
     background         $darkgrey
     statusline         $white
-#   	                       		border 		        bg		txt		indicator
-    focused_workspace $mediumgrey $grey $darkgrey $purple
-    active_workspace $lightblue $mediumgrey $darkgrey $purple
-    inactive_workspace $darkgrey $darkgrey $grey $purple
+    #border bg txt indicator
+    #focused_workspace $mediumgrey $grey $darkgrey $purple
+    #active_workspace $lightblue $mediumgrey $darkgrey $purple
+    #inactive_workspace $darkgrey $darkgrey $grey $purple
+    focused_workspace $green $green $darkgrey $purple
+    active_workspace $lightblue $green $darkgrey $purple
+    inactive_workspace $darkgrey $darkgrey $green $purple
     urgent_workspace $urgentred $urgentred $white $purple 
   }
 }
+
+bar {
+  font pango:HackGen35Nerd Bold 10
+  #status_command i3blocks
+  #status_command i3blocks -c ~/.config/i3/i3blocks.conf
+  status_command i3blocks -c ~/.config/i3/i3blocksbottom.conf
+  #position bottom 
+  position top
+  #position right
+  #i3bar_command i3bar --transparency
+  tray_output none
+  workspace_buttons no
+  mode hide
+  colors {
+    separator          $purple
+    background         $darkgrey
+    statusline         $white
+    #border bg txt indicator
+    #focused_workspace $mediumgrey $grey $darkgrey $purple
+    #active_workspace $lightblue $mediumgrey $darkgrey $purple
+    #inactive_workspace $darkgrey $darkgrey $grey $purple
+    focused_workspace $green $green $darkgrey $purple
+    active_workspace $lightblue $green $darkgrey $purple
+    inactive_workspace $darkgrey $darkgrey $green $purple
+    urgent_workspace $urgentred $urgentred $white $purple 
+  }
+}
+
+#bar{
+#  font pango:Noto Sans Regular 8, FontAwesome 11
+#  status_command i3blocks -c ~/.config/i3/i3blocksbottom.conf
+#  tray_output none
+#  position top
+#  #mode hide
+#  workspace_buttons no
+#}
+
 # windows+shift+s 矩形選択
 #bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-screenshot.png
 bindsym Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
