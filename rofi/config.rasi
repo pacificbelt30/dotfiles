@@ -1,19 +1,161 @@
-
-/* Theme EndeavourOS i3
-https://raw.githubusercontent.com/endeavouros-team/i3-EndeavourOS/master/.config/rofi/config.rasi
-Maintainer: joekamprad [joekamprad@endeavouros.com]
-https://endeavouros.com
-*/
+// https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
+// https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/rezlooks.rasi
 configuration {
-    modi: "window,run,drun,system:~/.config/i3/scripts/shutdown_menu";
-    sidebar-mode:  true;
-    hide-scrollbar: true;
-    kb-mode-next: "Ctrl+Tab";
-    color-normal: "argb:00383c4a, #b0b5bd, argb:00383c4a, argb:E6101010, #ff7f7f";
-    color-urgent: "argb:00383c4a, #b0b5bd, argb:00383c4a, argb:00383c4a, #24ffef";
-    color-active: "argb:00383c4a, #b0b5bd, argb:00383c4a, argb:00383c4a, #24ffef";
-    color-window: "argb:E6383c4a, argb:00383c4a, argb:E65294e2";
+  modi: "drun,system:~/.config/rofi/rofi_system.sh,window";
+  font: "HackGen35Nerd Bold 10";
+  sidebar-mode: true;
+  scrollbar: false;
+  kb-mode-next: "Control+Tab";
+  kb-mode-previous: "Control+Shift+Tab";
+  kb-cancel: "Escape";
+  show-icons: true;
+  display-drun: "";
+  display-system: "⏻";
+  display-window: "";
+  icon-theme: "Papirus";
 }
-//@theme "/usr/share/rofi/themes/docu.rasi"
-//@theme "/usr/share/rofi/themes/gruvbox-dark-hard.rasi"
-@theme "/usr/share/rofi/themes/Monokai.rasi"
+
+* {
+  window-color: #00000099;
+  bg-color: #00000000;
+  tx-color: #ffffffee;
+  bg-color-sel: #ffffff30;
+  tx-color-sel: #ffffffee;
+}
+
+#listview{
+  background-color: @bg-color;
+  text-color: @tx-color;
+  lines: 4;
+  columns: 6;
+  scrollbar: false;
+  margin: 5% 10% 5% 10%;
+  padding: 1%;
+  border: 0px;
+}
+
+#window {
+  transparency: "real";
+  background-color: @window-color;
+  text-color: @tx-color;
+  width: 100%;
+  height: 100%;
+}
+
+#prompt {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  font: "HackGen35Nerd Bold 13";
+}
+
+#entry {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  font: "HackGen35Nerd Bold 13";
+  placeholder: "Search";
+  blink: true;
+}
+
+#inputbar {
+  background-color: #00000099;
+  text-color: @tx-color;
+  border-radius: 10px;
+  margin: 5% 30% 0% 30%;
+  padding: 1.5%;
+}
+
+#mainbox {
+  background-color: @bg-color;
+  text-color: @tx-color;
+
+}
+
+#element {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  orientation: vertical;
+  border: 0px;
+  margin: 10px;
+  border-radius: 12px;
+  padding: 5px;
+}
+
+#element.normal.normal {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+#element.normal.urgent {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+#element.normal.active {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+#element.selected.normal {
+    background-color: @bg-color-sel;
+    text-color:       @tx-color-sel;
+}
+#element.selected.urgent {
+    background-color: @bg-color-sel;
+    text-color:       @tx-color-sel;
+}
+#element.selected.active {
+    background-color: @bg-color-sel;
+    text-color:       @tx-color-sel;
+}
+#element.alternate.normal {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+#element.alternate.urgent {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+#element.alternate.active {
+    background-color: @bg-color;
+    text-color:       @tx-color;
+}
+
+
+#element-icon {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  size: 70px;
+  border: 0px;
+}
+
+#element-text {
+  background-color: @bg-color;
+  text-color: inherit;
+  border: 0px;
+}
+
+#message {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  enable: false;
+}
+
+#textbox {
+  background-color: @bg-color;
+  text-color: @tx-color;
+}
+
+#mode-switcher {
+  background-color: @bg-color;
+  text-color: @tx-color;
+  margin: 0% 30% 5% 30%;
+}
+
+#button {
+  background-color: @bg-color;
+  text-color: @tx-color;
+}
+#button.selected {
+  background-color: @bg-color-sel;
+  text-color: @tx-color-sel;
+  border-radius: 10px;
+}
+
+

@@ -3,7 +3,6 @@ i3/config.endeavoros
 i3/i3blocks.conf
 dunst/
 compton/
-rofi/
 xfce4/
 prezto/runcoms/zshrc
 prezto/runcoms/zlogout
