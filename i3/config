@@ -384,6 +384,7 @@ bar {
 # windows+shift+s 矩形選択
 #bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-screenshot.png
 bindsym Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
+bindsym Mod4+Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
 #bindsym Print exec xfce4-screenshooter --fullscreen --clipboard # decrease screen brightness
 bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-rectscreenshot.png
 #bindsym Mod4+Shift+s exec xfce4-screenshooter --region --clipboard
