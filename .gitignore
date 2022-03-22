@@ -1,6 +1,7 @@
 p10k.zsh
 i3/config.endeavoros
 i3/i3blocks.conf
+i3/brightness/
 i3status/
 rofi/config
 dunst/
