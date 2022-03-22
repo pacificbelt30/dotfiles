@@ -1,6 +1,7 @@
 p10k.zsh
 i3/config.endeavoros
 i3/i3blocks.conf
+rofi/config
 dunst/
 compton/
 xfce4/
