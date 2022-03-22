@@ -29,10 +29,13 @@ zsh setup.sh
 - zsh シェル
 - vim エディタ
 - neovim エディタ
-- i3-wm ウィンドウマネージャ
+- i3-wm (i3-gaps) ウィンドウマネージャ
+- i3-blocks ステータスバー
 - rofi アプリケーションランチャ
 - tmux 仮想端末
 - xfce4-terminal or terminator ターミナルエミュレータ
-- compton 透過ソフトウェア
+- picom (compton) 透過ソフトウェア
+- (node.js)
+- (python3)
 
 ## 
