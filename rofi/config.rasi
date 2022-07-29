@@ -1,7 +1,7 @@
 // https://github.com/davatorium/rofi/blob/next/doc/rofi-theme.5.markdown
 // https://github.com/davatorium/rofi-themes/blob/master/User%20Themes/rezlooks.rasi
 configuration {
-  modi: "drun,system:~/.config/rofi/rofi_system.sh,window";
+  modi: "drun,system:~/.config/rofi/rofi_system.sh,window,test:~/.config/rofi/test.sh";
   font: "HackGen35Nerd Bold 10";
   sidebar-mode: true;
   scrollbar: false;

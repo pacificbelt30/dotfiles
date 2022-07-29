@@ -30,7 +30,7 @@ set virtualedit=onemore
 " 対応する括弧を光らせる
 set showmatch
 " ステータスラインを常に表示
-set laststatus=2 
+set laststatus=3
 " tagsファイルを見る
 set tags
 

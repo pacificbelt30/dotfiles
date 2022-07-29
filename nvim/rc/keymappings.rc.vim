@@ -50,6 +50,8 @@ onoremap @ i`
 onoremap [ i[
 onoremap { i{
 onoremap , i<
+nmap ; :
+"nmap : ;
 nmap <CR> <Nop>
 " ノーマルモードでエンターを押すと改行できる
 nnoremap <CR> o<Esc>

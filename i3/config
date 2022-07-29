@@ -33,8 +33,8 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec terminator
-#bindsym $mod+Return exec xfce4-terminal
+#bindsym $mod+Return exec terminator
+bindsym $mod+Return exec xfce4-terminal
 #bindsym $mod+Return exec konsole
 
 
@@ -229,14 +229,17 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightne
 bindsym F3 exec sh ~/.config/i3/scripts/discord_runorraise.sh firefox
 bindsym F2 exec sh ~/.config/i3/scripts/discord_runorraise.sh discord
 bindsym F1 workspace back_and_forth
-
+bindsym $mod+\, exec feh --bg-scale $HOME/Pictures/wallpaper.jpg
+bindsym $mod+. exec feh --bg-scale $HOME/Pictures/kinghalo1.jpg
 
 # autostart
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/wallpaper.jpg"
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/endeavouros-wallpaper.jpg"
 exec --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
+#exec --no-startup-id "feh --bg-scale $HOME/Pictures/kinghalo1.jpg"
 #exec_always --no-startup-id picom -CGb --experimental-backend
-exec_always --no-startup-id picom --config ~/.config/picom.conf -b -i 0.7 --experimental-backend
+#exec_always --no-startup-id picom -c --config ~/.config/picom.conf -b -i 0.7 --experimental-backend
+exec_always --no-startup-id picom -c --config ~/.config/picom.conf -b --experimental-backend
 exec --no-startup-id nm-applet
 exec --no-startup-id parcellite
 #exec --no-startup-id volumeicon
@@ -259,6 +262,8 @@ exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 # exec --no-startup-id xset s 480 dpms 600 600 600
 exec_always --no-startup-id "xrandr --output LVDS-1 --primary"
 exec_always --no-startup-id "xset s 1800 1800"
+exec_always --no-startup-id "xset r rate 333 70"
+
 
 ######################################
 # color settings for bar and windows #
@@ -317,6 +322,8 @@ bindsym F10 exec rofi -show window -display-window "Window : " -line-padding 4 \
                 -show-icons -drun-icon-theme "Arc-X-D" -font "Noto Sans Regular 11"
 
 
+set $mode hide
+#set $mode dock
 
 bar {
   font pango:HackGen35Nerd Bold 10
@@ -329,7 +336,8 @@ bar {
   #i3bar_command i3bar --transparency
   tray_output primary
   tray_padding 0
-  mode hide
+  mode $mode
+  #hidden_state hide
   colors {
     separator          $purple
     background         $darkgrey
@@ -356,7 +364,8 @@ bar {
   #i3bar_command i3bar --transparency
   tray_output none
   workspace_buttons no
-  mode hide
+  mode $mode
+  #hidden_state hide
   colors {
     separator          $purple
     background         $darkgrey
@@ -383,10 +392,10 @@ bar {
 
 # windows+shift+s 矩形選択
 #bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-screenshot.png
-bindsym Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
-bindsym Mod4+Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
+bindsym Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/screenshots/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
+bindsym Mod4+Print exec xfce4-screenshooter --fullscreen --save ~/Pictures/screenshots/`date "+%Y_%m_%d_%H-%M-%S"`-fullscreenshot.png # decrease screen brightness
 #bindsym Print exec xfce4-screenshooter --fullscreen --clipboard # decrease screen brightness
-bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/`date "+%Y_%m_%d_%H-%M-%S"`-rectscreenshot.png
+bindsym Mod4+Shift+s exec xfce4-screenshooter --region --save ~/Pictures/screenshots/`date "+%Y_%m_%d_%H-%M-%S"`-rectscreenshot.png
 #bindsym Mod4+Shift+s exec xfce4-screenshooter --region --clipboard
 
 

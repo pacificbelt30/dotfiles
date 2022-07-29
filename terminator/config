@@ -1,6 +1,7 @@
 [global_config]
   hide_from_taskbar = True
   title_transmit_bg_color = "#729fcf"
+  inactive_color_offset = 1.0
   title_use_system_font = False
   title_font = PlemolJP35 Console NF Medium 10
 [keybindings]
@@ -9,10 +10,10 @@
 [profiles]
   [[default]]
     background_color = "#2e1806"
-    background_darkness = 0.3
+    background_darkness = 0.1
     background_type = transparent
     cursor_color = "#D8DEE9"
-    font = PlemolJP Console NF Medium 12
+    font = PlemolJP Console NF Medium 10
     foreground_color = "#8fc39b"
     show_titlebar = False
     scrollbar_position = hidden
