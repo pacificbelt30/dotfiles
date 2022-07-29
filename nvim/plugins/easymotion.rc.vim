@@ -1,8 +1,11 @@
+let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_smartcase = 1
 "nmap f <Plug>(easymotion-lineforward)
 "nmap F <Plug>(easymotion-linebackward)
-map f <Plug>(easymotion-lineforward)
-map F <Plug>(easymotion-linebackward)
+"map f <Plug>(easymotion-lineforward)
+map f <Plug>(easymotion-lineanywhere)
+"map F <Plug>(easymotion-linebackward)
+map F <Plug>(easymotion-overwin-line)
 map <leader>s <Plug>(easymotion-bd-f)
 nmap <leader>s <Plug>(easymotion-overwin-f)
 map <leader>s <Plug>(easymotion-bd-f2)
