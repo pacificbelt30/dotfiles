@@ -1,0 +1,126 @@
+ #~/.config/starship.toml
+add_newline = true
+format = """\
+        ┌─── \
+        $directory\
+        [on ](bold)\
+        $localip\
+        $git_branch\
+        $git_commit\
+        $git_status\
+        $git_state\
+        $python\
+        $fill\
+        $cmd_duration\
+        $time\
+        $jobs\
+        $line_break\
+        [└─ ](bold white)\
+        $character\
+"""
+
+[line_break]
+disabled = false
+
+[battery]
+full_symbol = "🔋"
+charging_symbol = "🔌"
+discharging_symbol = "⚡"
+
+[[battery.display]]
+threshold = 30
+style = "bold red"
+
+[character]
+success_symbol="[ ](bold bright-white)"
+error_symbol="[ ](bold red)"
+#success_symbol="[❯](bold bright-white)"
+#error_symbol="[❯](bold red)"
+vimcmd_symbol="[❮](bold green)"
+vimcmd_replace_one_symbol="[❮](bold purple)"
+vimcmd_replace_symbol="[❮](bold purple)"
+vimcmd_visual_symbol="[❮](bold yellow)"
+
+[cmd_duration]
+min_time = 10_000  # Show command duration over 10,000 milliseconds (=10 sec)
+format = " took [$duration]($style) "
+
+[directory]
+truncation_length = 3
+truncate_to_repo = true
+format = "[$path](italic $style)[$lock_symbol]($lock_style) "
+
+[git_branch]
+format = "on [$symbol$branch]($style) "
+symbol = " "
+style = "bold yellow"
+
+[git_commit]
+commit_hash_length = 8
+style = "bold white"
+tag_disabled = false
+disabled = false
+
+[git_state]
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+
+[git_status]
+disabled = false
+conflicted = "⚔️ "
+ahead = "[⇡×${count}](bold green) "
+behind = "🐢 ×${count}"
+diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
+untracked = "[!×${count}](bold blue) "
+stashed = "📦 "
+modified = "[?×${count}](bold yellow) "
+staged = "[+×${count}](bold yellow) "
+renamed = "📛 ×${count}"
+deleted = "[🗑️ ×${count}](bold yellow) "
+style = "bright-white"
+format = "(\\[$all_status$ahead_behind\\] )"
+
+[hostname]
+ssh_only = false
+format = "<[$hostname]($style)>"
+trim_at = "-"
+style = "bold dimmed white"
+disabled = false
+
+[julia]
+format = "[$symbol$version]($style) "
+symbol = "ஃ "
+style = "bold green"
+
+[memory_usage]
+format = "$symbol[${ram}( | ${swap})]($style) "
+threshold = 70
+style = "bold dimmed white"
+disabled = false
+
+[package]
+disabled = true
+
+[python]
+format = '[${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) )]($style)'
+style = "bold blue"
+symbol=" "
+
+[rust]
+format = "[$symbol$version]($style) "
+style = "bold green"
+
+[time]
+time_format = "%T"
+format = "🕙 $time($style) "
+style = "bright-white"
+disabled = false
+
+[username]
+style_user = "bold dimmed blue"
+show_always = false
+
+[localip]
+ssh_only = false
+disabled = false
+style = "bold green"
+
