@@ -118,6 +118,7 @@ onoremap @ i`
 onoremap [ i[
 onoremap { i{
 ""inoremap < <><LEFT>
+nmap ; :
 inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
 filetype on
 filetype indent on
