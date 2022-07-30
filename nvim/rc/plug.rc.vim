@@ -40,6 +40,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " 賢いハイライト
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+" 
+Plug 'nvim-treesitter/nvim-treesitter-context'
+Plug 'haringsrob/nvim_context_vt'
+Plug 'm-demare/hlargs.nvim'
 " 移動系
 Plug 'easymotion/vim-easymotion'
 " 日本語ヘルプ
@@ -65,13 +69,17 @@ Plug 'junegunn/fzf.vim'
 Plug 'antoinemadec/coc-fzf'
 " undo tree
 Plug 'mbbill/undotree'
+" サイドバー
+"Plug 'sidebar-nvim/sidebar.nvim'
+Plug 'petertriho/nvim-scrollbar'
 " comfortable scroll 別になくていい
 Plug 'psliwka/vim-smoothie'
 " Plug 'terryma/vim-smooth-scroll'
 " インデント可視化
 Plug 'Yggdroot/indentLine'
-" カーソル下の単語にアンダーライン
+" カーソル下の単語にアンダーライン，色つけ
 Plug 'itchyny/vim-cursorword'
+"Plug 'RRethy/vim-illuminate'
 " テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 Plug 'joshdick/onedark.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}

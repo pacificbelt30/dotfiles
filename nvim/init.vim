@@ -28,6 +28,9 @@ source $HOME/.config/nvim/plugins/fzf.rc.vim
 source $HOME/.config/nvim/plugins/indentLine.rc.vim
 "lua require('telescoperc')
 
+" Lua version
+source $HOME/.config/nvim/rc/luaoptions.rc.vim
+
 " test script
 source $HOME/work/float_term/float_term.vim
 let test=0

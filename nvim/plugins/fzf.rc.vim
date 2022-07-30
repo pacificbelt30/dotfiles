@@ -27,6 +27,7 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
 " preview付きBLines
 command! -bang -nargs=* BLines
     \ call fzf#vim#grep(
@@ -50,9 +51,10 @@ endfunction
 "nnoremap <leader>n :Files<CR>
 "nnoremap <leader>n :ProjectFiles<CR>
 "nnoremap <leader>n :GitProjectFiles<CR>
-nnoremap <leader>r :Rg 
+"nnoremap <leader>r :Rg 
 nnoremap <leader>b :Buffers<CR>
 nmap / :BLines<CR>
+nmap \ :Rg<CR>
 map * <nop>
 nmap * :call AsteriskGrep()<CR>
 nnoremap <leader>e :CocFzfList diagnostics<CR>
