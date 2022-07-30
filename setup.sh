@@ -80,6 +80,7 @@ ln -snf `pwd`/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
 ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
 ln -snf `pwd`/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
 ln -snf `pwd`/i3wm-setup/.config/dunst/dunstrc $HOME/.config/dunst/dunstrc
+ln -snf `pwd`/starship.toml $HOME/.config/starship.toml
 echo "リンク貼り付け終了($HOME/.config/以下)"
 echo "End pasting the link to the configuration file (under $HOME/.config/)."
 
