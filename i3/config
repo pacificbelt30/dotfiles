@@ -220,12 +220,6 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10 # increase screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10 # decrease screen brightness
 #bindsym Print exec xfce4-screenshooter # decrease screen brightness
 
-# Media player controls
-# bindsym XF86AudioPlay exec playerctl play
-# bindsym XF86AudioPause exec playerctl pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
-
 bindsym F3 exec sh ~/.config/i3/scripts/discord_runorraise.sh firefox
 bindsym F2 exec sh ~/.config/i3/scripts/discord_runorraise.sh discord
 bindsym F1 workspace back_and_forth
@@ -234,9 +228,7 @@ bindsym $mod+. exec feh --bg-scale $HOME/Pictures/kinghalo1.jpg
 
 # autostart
 #exec --no-startup-id "feh --bg-scale $HOME/.config/i3/wallpaper.jpg"
-#exec --no-startup-id "feh --bg-scale $HOME/.config/i3/endeavouros-wallpaper.jpg"
 exec --no-startup-id "feh --bg-scale $HOME/Pictures/wallpaper.jpg"
-#exec --no-startup-id "feh --bg-scale $HOME/Pictures/kinghalo1.jpg"
 #exec_always --no-startup-id picom -CGb --experimental-backend
 #exec_always --no-startup-id picom -c --config ~/.config/picom.conf -b -i 0.7 --experimental-backend
 exec_always --no-startup-id picom -c --config ~/.config/picom.conf -b --experimental-backend
