@@ -25,8 +25,8 @@ Plug 'Shougo/context_filetype.vim'
 Plug '~/work/easyCO.vim'
 " アスタリスク拡張
 Plug '~/work/exasterisk.vim'
-" タグ生成 F2
-Plug 'preservim/tagbar'
+" タグ生成 F12
+"Plug 'preservim/tagbar'
 " powerline的なやつになる
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -38,11 +38,17 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " 補完
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" tagbarのlsp対応版
+Plug 'liuchengxu/vista.vim'
 " 賢いハイライト
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-" 
+" treesitter 親となるクラスや関数を上部に表示する
 Plug 'nvim-treesitter/nvim-treesitter-context'
+" treesitter rainbow theses
+Plug 'p00f/nvim-ts-rainbow'
+" treesitter クラスや関数の詳細を下部に表示
 Plug 'haringsrob/nvim_context_vt'
+" treesitter 引数を色付け
 Plug 'm-demare/hlargs.nvim'
 " 移動系
 Plug 'easymotion/vim-easymotion'
@@ -80,9 +86,17 @@ Plug 'Yggdroot/indentLine'
 " カーソル下の単語にアンダーライン，色つけ
 Plug 'itchyny/vim-cursorword'
 "Plug 'RRethy/vim-illuminate'
+" readable fold
+Plug 'lambdalisue/readablefold.vim'
+" 通知ポップアップ
+Plug 'rcarriga/nvim-notify'
 " テーマ
 Plug 'morhetz/gruvbox',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'EdenEast/nightfox.nvim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 Plug 'joshdick/onedark.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'NLKNguyen/papercolor-theme',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+Plug 'sainnhe/gruvbox-material',{'do': 'cp colors/* ~/.config/nvim/colors/'}
+
 Plug 'jacoborus/tender.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 Plug 'nanotech/jellybeans.vim',{'do': 'cp colors/* ~/.config/nvim/colors/'}
 call plug#end()

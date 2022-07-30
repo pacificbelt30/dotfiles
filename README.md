@@ -35,6 +35,7 @@ zsh setup.sh
 - tmux 仮想端末
 - xfce4-terminal or terminator ターミナルエミュレータ
 - picom (compton) 透過ソフトウェア
+- starship rust製プロンプト
 - (node.js)
 - (python3)
 

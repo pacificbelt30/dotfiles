@@ -1,4 +1,5 @@
 let g:EasyMotion_do_mapping = 0
+let g:EasyMotion_skipfoldedline = 0
 let g:EasyMotion_smartcase = 1
 "map f <Plug>(easymotion-lineforward)
 "map F <Plug>(easymotion-linebackward)
@@ -18,3 +19,4 @@ nmap <leader>r <Plug>(easymotion-overwin-f)
 "omap / <Plug>(easymotion-tn)
 "map  n <Plug>(easymotion-next)
 "map  N <Plug>(easymotion-prev)
+

@@ -19,6 +19,7 @@ source $HOME/.config/nvim/rc/myTextObjects.rc.vim
 "source $HOME/.config/nvim/plugins/deoplete.rc.vim
 "source $HOME/.config/nvim/plugins/neosnippet.rc.vim
 source $HOME/.config/nvim/plugins/airline.rc.vim
+"source $HOME/.config/nvim/plugins/tagbar.rc.vim
 source $HOME/.config/nvim/plugins/tagbar.rc.vim
 source $HOME/.config/nvim/plugins/coc.rc.vim
 source $HOME/.config/nvim/plugins/denite.rc.vim

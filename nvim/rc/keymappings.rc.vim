@@ -54,7 +54,8 @@ nnoremap ; :
 "nnoremap : ;
 nmap <CR> <Nop>
 " ノーマルモードでエンターを押すと改行できる
-nnoremap <CR> o<Esc>
+"nnoremap <CR> o<Esc>
+nnoremap <CR> za
 "nnoremap gb g; " 変更履歴を戻る 注：変更履歴はファイル間のジャンプはなし?
 "nnoremap gf g. " 変更履歴を進める gfはカーソル下のファイルを開く
 "ジャンプ履歴を戻る 注：ジャンプ履歴はファイルを超えても飛んでいく
