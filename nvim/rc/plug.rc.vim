@@ -37,7 +37,25 @@ Plug 'tpope/vim-fugitive'
 " git の追加範囲とかにマークがつく
 Plug 'airblade/vim-gitgutter'
 " 補完
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" ================================
+" nvim-cmp
+Plug 'neovim/nvim-lspconfig'
+Plug 'williamboman/mason.nvim'
+Plug 'williamboman/mason-lspconfig.nvim'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'kdheepak/cmp-latex-symbols'
+
+" For ultisnips users.
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+" ================================
 " tagbarのlsp対応版
 Plug 'liuchengxu/vista.vim'
 " 賢いハイライト
@@ -72,7 +90,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 " fzf,coc連携 :CocFzfList
-Plug 'antoinemadec/coc-fzf'
+"Plug 'antoinemadec/coc-fzf'
 " undo tree
 Plug 'mbbill/undotree'
 " サイドバー

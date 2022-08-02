@@ -27,10 +27,16 @@ source $HOME/.config/nvim/plugins/easymotion.rc.vim
 source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
 source $HOME/.config/nvim/plugins/fzf.rc.vim
 source $HOME/.config/nvim/plugins/indentLine.rc.vim
-"lua require('telescoperc')
+set runtimepath+=$HOME/.config/nvim/plugins/
+set runtimepath+=$HOME/.config/nvim/rc/
+" lua plugins
+lua require('nvim-cmp')
+lua require('telescoperc')
+"source $HOME/.config/nvim/plugins/nvim-cmp.rc.vim
 
 " Lua version
-source $HOME/.config/nvim/rc/luaoptions.rc.vim
+"source $HOME/.config/nvim/plugins/luaoptions.rc.vim
+lua require('luaoptions')
 
 " test script
 source $HOME/work/float_term/float_term.vim
