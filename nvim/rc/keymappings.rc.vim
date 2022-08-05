@@ -1,7 +1,7 @@
 " 割り当て方として 連打したくなるようなやつ -> <C,Shift,Alt>+α , そうじゃないやつ -> [a-z,A-Z].*
 let mapleader = "\<Space>"
-inoremap <silent> jj <C-\><C-n>
-tnoremap <silent> jj <C-\><C-n>
+" inoremap <silent> jj <C-\><C-n>
+" tnoremap <silent> jj <C-\><C-n>
 inoremap <silent> jk <C-\><C-n>
 tnoremap <silent> jk <C-\><C-n>
 "cnoremap <silent> jj <ESC>

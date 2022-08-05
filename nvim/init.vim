@@ -26,6 +26,7 @@ source $HOME/.config/nvim/plugins/denite.rc.vim
 source $HOME/.config/nvim/plugins/easymotion.rc.vim
 source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
 source $HOME/.config/nvim/plugins/fzf.rc.vim
+source $HOME/.config/nvim/plugins/lexima.rc.vim
 source $HOME/.config/nvim/plugins/indentLine.rc.vim
 set runtimepath+=$HOME/.config/nvim/plugins/
 set runtimepath+=$HOME/.config/nvim/rc/
