@@ -15,13 +15,11 @@ source $HOME/.config/nvim/rc/myTextObjects.rc.vim
 
 "プラグインごとの設定読み込み
 "source ~/.vim/co.vim
-"source $HOME/.config/nvim/plugins/LanguageClient-neovim.rc.vim
-"source $HOME/.config/nvim/plugins/deoplete.rc.vim
 "source $HOME/.config/nvim/plugins/neosnippet.rc.vim
 source $HOME/.config/nvim/plugins/airline.rc.vim
 "source $HOME/.config/nvim/plugins/tagbar.rc.vim
 source $HOME/.config/nvim/plugins/tagbar.rc.vim
-source $HOME/.config/nvim/plugins/coc.rc.vim
+" source $HOME/.config/nvim/plugins/coc.rc.vim
 source $HOME/.config/nvim/plugins/denite.rc.vim
 source $HOME/.config/nvim/plugins/easymotion.rc.vim
 source $HOME/.config/nvim/plugins/tree-sitter.rc.vim
