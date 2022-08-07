@@ -115,6 +115,8 @@ Plug 'itchyny/vim-cursorword'
 Plug 'lambdalisue/readablefold.vim'
 " 通知ポップアップ
 Plug 'rcarriga/nvim-notify'
+" floting term
+Plug 'akinsho/toggleterm.nvim', {'tag' : 'v2.*'}
 
 " テーマ
 " ================================
