@@ -16,7 +16,7 @@ command! -bang -nargs=? -complete=dir Files
     "\ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline', '--preview', 'head -20 {}']}, <bang>0)
 
 " GFilesはgitignore対象を非表示
-command! GitProjectFiles execute 'GFiles -oc' s:find_git_root()
+command! GitProjectFiles execute 'GFiles -oc --exclude-standard' s:find_git_root()
 command! -bang -nargs=? -complete=dir GFiles
     \ call fzf#vim#gitfiles(<q-args>, fzf#vim#with_preview(), <bang>0)
 
