@@ -7,7 +7,8 @@ Plug 'kana/vim-operator-replace'
 " textobj
 Plug 'kana/vim-textobj-user'
 " 括弧
-Plug 'cohama/lexima.vim'
+" Plug 'cohama/lexima.vim'
+Plug 'windwp/nvim-autopairs'
 " なんかいろいろ
 Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " ファイルタイプを

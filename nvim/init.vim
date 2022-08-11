@@ -32,7 +32,7 @@ set runtimepath+=$HOME/.config/nvim/rc/
 " lua plugins
 lua require('nvim-cmp')
 lua require('telescoperc')
-"source $HOME/.config/nvim/plugins/nvim-cmp.rc.vim
+"source $HOME/.config/nvim/plugins/lua/nvim-cmp.lua
 
 " Lua version
 "source $HOME/.config/nvim/plugins/luaoptions.rc.vim
