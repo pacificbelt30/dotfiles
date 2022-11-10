@@ -71,6 +71,7 @@ endif
 " fzfターミナル上でのキーマップ
 augroup _fzf_
   autocmd!
+  autocmd FileType fzf set winblend=15
   autocmd FileType fzf nnoremap <buffer> q :q<CR> 
   autocmd FileType fzf tnoremap <buffer> <Esc> <C-\><C-n>:q<CR>
   autocmd FileType fzf tnoremap <buffer> jj <C-\><C-n>:q<CR>

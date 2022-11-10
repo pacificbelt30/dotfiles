@@ -87,6 +87,10 @@ set background=dark
 colorscheme gruvbox
 set t_Co=256
 set termguicolors
+" コマンドラインの高さが0になる
+set cmdheight=0
+set pumblend=20
+set winblend=10
 
 if &compatible
  set nocompatible
