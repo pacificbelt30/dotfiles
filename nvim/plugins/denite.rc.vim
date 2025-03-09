@@ -1,3 +1,5 @@
+" This file contains the configuration for the denite.nvim plugin
+
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -17,7 +19,6 @@ endfunction
 
 augroup myDenite
   nnoremap <silent><Space>d :Denite file/rec<CR>
-  "nnoremap <silent><Space>b :Denite buffer<CR>
   nnoremap <silent><Space>g :Denite grep<CR>
 augroup END
 

@@ -1,3 +1,5 @@
+" This file contains the configuration for the tree-sitter plugin
+
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {

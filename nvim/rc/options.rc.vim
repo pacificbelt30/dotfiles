@@ -1,3 +1,5 @@
+" This file contains the configuration options for Neovim
+
 "文字コードをUFT-8に設定
 set fenc=utf-8
 set encoding=utf-8

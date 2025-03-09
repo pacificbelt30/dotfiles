@@ -1,4 +1,5 @@
-" vim-racerの設定
+" This file contains the configuration for the vim-racer plugin
+
 set hidden
 let g:racer_cmd = 'racer'
 let g:racer_experimental_completer = 1
