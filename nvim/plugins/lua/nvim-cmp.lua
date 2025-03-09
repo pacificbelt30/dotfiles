@@ -1,3 +1,5 @@
+-- This file contains the configuration for the nvim-cmp plugin
+
 -- Setup nvim-cmp.
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

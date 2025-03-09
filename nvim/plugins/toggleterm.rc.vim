@@ -1,3 +1,5 @@
+" This file contains the configuration for the toggleterm plugin
+
 lua << END
 require("toggleterm").setup{}
 END

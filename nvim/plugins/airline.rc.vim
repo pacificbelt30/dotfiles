@@ -1,8 +1,9 @@
+" This file contains the configuration for the airline plugin and lualine plugin
+
 let g:airline#extensions#tabline#enabled = 0
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'default'
-"let g:airline_theme = 'molokai'
 let g:airline_theme = 'wombat'
 let g:airline_theme = 'deus'
 let g:airline_powerline_fonts = 1
@@ -15,7 +16,6 @@ require('lualine').setup{
     theme = 'onedark',
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
-    -- section_separators = { left = '', right = ''},
     disabled_filetypes = {
       statusline = {},
       winbar = {},

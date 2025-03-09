@@ -1,3 +1,4 @@
+-- This file contains the configuration for the telescope.nvim plugin
 
 local api = vim.api
 --api.nvim_set_keymap('n', ' n', '<cmd>Telescope find_files<cr>', { noremap = true })

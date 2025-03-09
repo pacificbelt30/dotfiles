@@ -1,5 +1,5 @@
-"nnoremap <F2> :TagbarToggle<CR>
-"nnoremap <F2> :TagbarToggle<CR>
+" This file contains the configuration for the tagbar plugin
+
 let g:vista_icon_indent = ["╰─▸ ", "├─▸ "]
 let g:vista_default_executive = 'ctags'
 let g:vista_fzf_preview = ['right:50%']
@@ -15,5 +15,4 @@ let g:vista#renderer#icons = {
 nnoremap <F12> :Vista!!<CR>
 augroup vista
   autocmd!
-  "autocmd VimEnter * Vista
 augroup END
