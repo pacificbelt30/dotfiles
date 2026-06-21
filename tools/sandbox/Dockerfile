@@ -75,10 +75,14 @@ RUN curl -fsSL https://raw.githubusercontent.com/slimm609/checksec.sh/master/che
 COPY --chown=sandbox:sandbox shell/zsh/zshrc /home/sandbox/dotfiles/shell/zsh/zshrc
 COPY --chown=sandbox:sandbox starship.toml /home/sandbox/dotfiles/starship.toml
 COPY --chown=sandbox:sandbox lang/python/pwn /home/sandbox/dotfiles/lang/python/pwn
+COPY --chown=sandbox:sandbox tools/ai/install_ai_clis.sh /home/sandbox/dotfiles/tools/ai/install_ai_clis.sh
 RUN ln -s /home/sandbox/dotfiles/shell/zsh/zshrc /home/sandbox/.zshrc \
     && mkdir -p /home/sandbox/.config \
     && ln -s /home/sandbox/dotfiles/starship.toml /home/sandbox/.config/starship.toml \
     && /home/sandbox/dotfiles/lang/python/pwn/setup_pwn_env.sh
+
+# AI coding CLIs (Claude Code, OpenAI Codex CLI)
+RUN . "$NVM_DIR/nvm.sh" && /home/sandbox/dotfiles/tools/ai/install_ai_clis.sh
 
 WORKDIR /work
 CMD ["zsh"]

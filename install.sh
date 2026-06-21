@@ -6,6 +6,21 @@
 set -e
 cd "$(dirname "$0")"
 
+# ---- デスクトップ環境(i3/picom/rofi/terminator)の設定を適用するか選択 -------------
+# 非対話実行時やCI等では DOTFILES_DESKTOP=yes/no で明示できる。
+APPLY_DESKTOP="${DOTFILES_DESKTOP:-}"
+if [ -z "$APPLY_DESKTOP" ]; then
+  if [ -t 0 ]; then
+    read "REPLY?デスクトップ環境(i3/picom/rofi/terminator)の設定を適用しますか? [y/N] "
+    case "$REPLY" in
+      [yY]*) APPLY_DESKTOP=yes ;;
+      *) APPLY_DESKTOP=no ;;
+    esac
+  else
+    APPLY_DESKTOP=no
+  fi
+fi
+
 # ---- vim-plug -------------------------------------------------------------
 echo "vim-plugのインストール"
 echo "Install vim-plug"
@@ -22,15 +37,17 @@ makedir () {
 }
 makedir .vim
 makedir .config
-makedir .config/picom
-makedir .config/terminator
-makedir .config/i3
-makedir .config/rofi
-makedir .config/dunst
-makedir .config/xfce4
-makedir .config/xfce4/terminal
 makedir .config/nvim
 makedir .config/nvim/colors
+if [ "$APPLY_DESKTOP" = yes ]; then
+  makedir .config/picom
+  makedir .config/terminator
+  makedir .config/i3
+  makedir .config/rofi
+  makedir .config/dunst
+  makedir .config/xfce4
+  makedir .config/xfce4/terminal
+fi
 
 # ---- $HOME 直下の設定ファイル -------------------------------------------------
 echo "設定ファイルのリンク貼り付け開始(\$HOME以下)"
@@ -51,22 +68,29 @@ ln -snf "$(pwd)"/nvim/plugins $HOME/.config/nvim/plugins
 ln -snf "$(pwd)"/nvim/snippets $HOME/.config/nvim/snippets
 ln -snf "$(pwd)"/nvim/ftplugin $HOME/.config/nvim/ftplugin
 ln -snf "$(pwd)"/nvim/rc $HOME/.config/nvim/rc
-ln -snf "$(pwd)"/desktop/rofi/config.rasi $HOME/.config/rofi/config.rasi
-ln -snf "$(pwd)"/desktop/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
-ln -snf "$(pwd)"/desktop/i3/config $HOME/.config/i3/config
-ln -snf "$(pwd)"/desktop/i3/i3blocks_up.conf $HOME/.config/i3/i3blocks_up.conf
-ln -snf "$(pwd)"/desktop/i3/i3blocks_bottom.conf $HOME/.config/i3/i3blocks_bottom.conf
-ln -snf "$(pwd)"/desktop/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
-ln -snf "$(pwd)"/desktop/i3/scripts $HOME/.config/i3/scripts
-ln -snf "$(pwd)"/desktop/terminator/config $HOME/.config/terminator/config
-ln -snf "$(pwd)"/desktop/picom/picom.conf $HOME/.config/picom/picom.conf
 ln -snf "$(pwd)"/starship.toml $HOME/.config/starship.toml
 
-# i3wm-setup submodule から持ってくるもの
-ln -snf "$(pwd)"/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
-ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
-ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
-ln -snf "$(pwd)"/i3wm-setup/.config/dunst/dunstrc $HOME/.config/dunst/dunstrc
+if [ "$APPLY_DESKTOP" = yes ]; then
+  echo "デスクトップ環境(i3/picom/rofi/terminator)の設定も配置"
+  ln -snf "$(pwd)"/desktop/rofi/config.rasi $HOME/.config/rofi/config.rasi
+  ln -snf "$(pwd)"/desktop/rofi/rofi_system.sh $HOME/.config/rofi/rofi_system.sh
+  ln -snf "$(pwd)"/desktop/i3/config $HOME/.config/i3/config
+  ln -snf "$(pwd)"/desktop/i3/i3blocks_up.conf $HOME/.config/i3/i3blocks_up.conf
+  ln -snf "$(pwd)"/desktop/i3/i3blocks_bottom.conf $HOME/.config/i3/i3blocks_bottom.conf
+  makedir Pictures
+  ln -snf "$(pwd)"/desktop/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
+  ln -snf "$(pwd)"/desktop/i3/scripts $HOME/.config/i3/scripts
+  ln -snf "$(pwd)"/desktop/terminator/config $HOME/.config/terminator/config
+  ln -snf "$(pwd)"/desktop/picom/picom.conf $HOME/.config/picom/picom.conf
+
+  # i3wm-setup submodule から持ってくるもの
+  ln -snf "$(pwd)"/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
+  ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
+  ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
+  ln -snf "$(pwd)"/i3wm-setup/.config/dunst/dunstrc $HOME/.config/dunst/dunstrc
+else
+  echo "デスクトップ環境の設定はスキップ(再度実行する場合は DOTFILES_DESKTOP=yes を指定)"
+fi
 echo "リンク貼り付け終了(\$HOME/.config/以下)"
 echo "End pasting the link to the configuration file (under \$HOME/.config/)."
 
@@ -75,6 +99,10 @@ echo "Python(uv)のインストール"
 ./lang/python/install_uv.sh
 echo "Node.js(nvm)のインストール"
 ./lang/node/install_nvm.sh
+
+# ---- AI CLI (Claude Code, Codex) のインストール -----------------------------
+echo "Claude Code / Codex CLIのインストール"
+./tools/ai/install_ai_clis.sh
 
 echo "セットアップ完了。シェルを再起動するか 'exec zsh' を実行してください。"
 echo "Setup complete. Restart your shell or run 'exec zsh'."
