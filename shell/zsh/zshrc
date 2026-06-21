@@ -45,12 +45,17 @@ export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 
 # ---- Aliases ----------------------------------------------------------------
-alias ls='exa --icons'
-alias lt='exa --icons --tree -L 3'
+alias ls='eza --icons'
+alias lt='eza --icons --tree -L 3'
 alias gadd='git add'
 alias gcommit='git commit -m'
 alias gpush='git push'
 alias textemp='cp ~/Documents/latextemp.tex "$(pwd)/report.tex"'
+
+# fd/bat are named fdfind/batcat on Debian/Ubuntu; tools/cli/install_cli_tools.sh
+# already symlinks them under ~/.local/bin, this is just a fallback.
+command -v fd >/dev/null 2>&1 || { command -v fdfind >/dev/null 2>&1 && alias fd='fdfind'; }
+command -v bat >/dev/null 2>&1 || { command -v batcat >/dev/null 2>&1 && alias bat='batcat'; }
 
 # ls after cd, except when landing back in $HOME
 chpwd() {
