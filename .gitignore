@@ -5,3 +5,6 @@ desktop/rofi/config
 dunst/
 compton/
 xfce4/
+
+# uv-managed virtualenvs
+.venv/
