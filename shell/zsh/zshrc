@@ -62,6 +62,14 @@ chpwd() {
   [[ "$PWD" != "$HOME" ]] && ls
 }
 
+# ---- Sandbox ----------------------------------------------------------------
+# `sand`: build/enter a disposable Docker sandbox (see tools/sandbox/) with
+# $PWD mounted at /work. Override DOTFILES_DIR if this repo isn't at ~/dotfiles.
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+sand() {
+  "$DOTFILES_DIR/tools/sandbox/sand.sh" "$@"
+}
+
 # machine-local overrides (untracked, e.g. private aliases/sources)
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
 

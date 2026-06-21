@@ -45,7 +45,7 @@ fi
 CHECKSEC_PATH="$HOME/.local/bin/checksec"
 if [ ! -x "$CHECKSEC_PATH" ]; then
   echo "Installing checksec.sh..."
-  curl -fsSL https://raw.githubusercontent.com/slimm609/checksec.sh/main/checksec -o "$CHECKSEC_PATH"
+  curl -fsSL https://raw.githubusercontent.com/slimm609/checksec.sh/master/checksec -o "$CHECKSEC_PATH"
   chmod +x "$CHECKSEC_PATH"
 fi
 
