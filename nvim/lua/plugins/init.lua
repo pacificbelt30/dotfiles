@@ -1,132 +1,127 @@
--- プラグイン宣言 (lazy.nvim)
--- vim-plug から lazy.nvim へ移行したもの。設定本体は lua/plugins/*.lua 側に
--- あり、ここではプラグインの宣言とブートストラップのみを行う。
+-- プラグイン宣言 (旧 rc/plug.rc.vim)
+-- 使用プラグイン自体は変更せず、vim-plug の宣言を Lua へ移植したもの。
+local Plug = vim.fn['plug#']
 
--- lazy.nvim のブートストラップ (未導入なら stable を clone する)
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-  local out = vim.fn.system({ 'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
-      { out, 'WarningMsg' },
-      { '\nPress any key to exit...', 'MoreMsg' },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
+vim.call('plug#begin')
 
-require('lazy').setup({
-  -- 置換 (operator)
-  -- vim-operator-replace は operator#user#define を使うため
-  -- vim-operator-user を先に読み込ませる (lazy は宣言順を保証しない)
-  'kana/vim-operator-user',
-  { 'kana/vim-operator-replace', dependencies = { 'kana/vim-operator-user' } },
-  -- textobj
-  'kana/vim-textobj-user',
-  -- 括弧
-  'windwp/nvim-autopairs',
-  -- ファイルタイプ判定
-  'Shougo/context_filetype.vim',
-  -- コメントアウト
-  'pacificbelt30/easyCO.vim',
-  -- アスタリスク拡張
-  'pacificbelt30/exasterisk.vim',
+-- Plug 'scrooloose/nerdtree'
+-- 置換
+Plug('kana/vim-operator-user')
+Plug('kana/vim-operator-replace')
+-- textobj
+Plug('kana/vim-textobj-user')
+-- 括弧
+-- Plug 'cohama/lexima.vim'
+Plug('windwp/nvim-autopairs')
+-- なんかいろいろ
+Plug('Shougo/denite.nvim', { ['do'] = ':UpdateRemotePlugins' })
+-- ファイルタイプを
+Plug('Shougo/context_filetype.vim')
+-- コメントアウト
+Plug('pacificbelt30/easyCO.vim')
+-- アスタリスク拡張
+Plug('pacificbelt30/exasterisk.vim')
+-- タグ生成 F12
+-- Plug 'preservim/tagbar'
 
-  -- ステータスライン (lualine。vim-airline から移行)
-  'nvim-lualine/lualine.nvim',
-  'kyazdani42/nvim-web-devicons',
-  -- アイコン
-  'ryanoasis/vim-devicons',
+-- powerline的なやつになる
+Plug('vim-airline/vim-airline')
+Plug('vim-airline/vim-airline-themes')
+-- lualine
+Plug('nvim-lualine/lualine.nvim')
+Plug('kyazdani42/nvim-web-devicons')
+-- アイコン
+Plug('ryanoasis/vim-devicons')
 
-  -- git 操作
-  'tpope/vim-fugitive',
-  -- git の追加範囲とかにマークがつく
-  'airblade/vim-gitgutter',
+-- git関連
+-- git 操作
+Plug('tpope/vim-fugitive')
+-- git の追加範囲とかにマークがつく
+Plug('airblade/vim-gitgutter')
 
-  -- 補完 / LSP (nvim-cmp)
-  'neovim/nvim-lspconfig',
-  'williamboman/mason.nvim',
-  'williamboman/mason-lspconfig.nvim',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp-signature-help',
-  'hrsh7th/cmp-nvim-lua',
-  'kdheepak/cmp-latex-symbols',
+-- 補完
+-- Plug 'neoclide/coc.nvim', {'branch': 'release'}
+-- nvim-cmp
+Plug('neovim/nvim-lspconfig')
+Plug('williamboman/mason.nvim')
+Plug('williamboman/mason-lspconfig.nvim')
+Plug('hrsh7th/cmp-nvim-lsp')
+Plug('hrsh7th/cmp-buffer')
+Plug('hrsh7th/cmp-path')
+Plug('hrsh7th/cmp-cmdline')
+Plug('hrsh7th/nvim-cmp')
+Plug('hrsh7th/cmp-nvim-lsp-signature-help')
+Plug('hrsh7th/cmp-nvim-lua')
+Plug('kdheepak/cmp-latex-symbols')
 
-  -- スニペット (LuaSnip。ultisnips / vim-snippets から移行)
-  'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
-  'rafamadriz/friendly-snippets',
+-- For ultisnips users.
+Plug('SirVer/ultisnips')
+Plug('quangnguyen30192/cmp-nvim-ultisnips')
+-- tagbarのlsp対応版
+Plug('liuchengxu/vista.vim')
 
-  -- tagbar の lsp 対応版
-  'liuchengxu/vista.vim',
+-- TreeSitter
+-- 賢いハイライト
+Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
+-- treesitter 親となるクラスや関数を上部に表示する
+Plug('nvim-treesitter/nvim-treesitter-context')
+-- treesitter rainbow theses
+Plug('p00f/nvim-ts-rainbow')
+-- treesitter クラスや関数の詳細を下部に表示
+Plug('haringsrob/nvim_context_vt')
+-- treesitter 引数を色付け
+Plug('m-demare/hlargs.nvim')
 
-  -- TreeSitter
-  -- 賢いハイライト (旧 API の .configs を使うため master ブランチに固定)
-  { 'nvim-treesitter/nvim-treesitter', branch = 'master', build = ':TSUpdate' },
-  -- treesitter 親となるクラスや関数を上部に表示する
-  'nvim-treesitter/nvim-treesitter-context',
-  -- rainbow括弧 (メンテ終了した nvim-ts-rainbow の後継)
-  'HiPhish/rainbow-delimiters.nvim',
-  -- treesitter クラスや関数の詳細を下部に表示
-  'haringsrob/nvim_context_vt',
-  -- treesitter 引数を色付け
-  'm-demare/hlargs.nvim',
+-- 移動系
+Plug('easymotion/vim-easymotion')
+-- 日本語ヘルプ
+Plug('vim-jp/vimdoc-ja')
+-- .使った繰り返しが強くなるらしい (試してない)
+Plug('tpope/vim-repeat')
+-- 禅モード
+Plug('junegunn/goyo.vim')
+-- ウィンドウリサイズ
+Plug('simeji/winresizer')
+-- vim plugin help generator
+Plug('LeafCage/vimhelpgenerator')
+-- tex
+-- Plug 'lervag/vimtex'
+-- snippets
+Plug('honza/vim-snippets')
+-- fzf ファジーファインダー
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope.nvim')
+Plug('junegunn/fzf')
+Plug('junegunn/fzf.vim')
+-- fzf,coc連携 :CocFzfList
+-- Plug 'antoinemadec/coc-fzf'
+-- undo tree
+Plug('mbbill/undotree')
+-- サイドバー
+-- Plug 'sidebar-nvim/sidebar.nvim'
+Plug('petertriho/nvim-scrollbar')
+-- comfortable scroll 別になくていい
+Plug('psliwka/vim-smoothie')
+-- Plug 'terryma/vim-smooth-scroll'
+-- インデント可視化
+Plug('Yggdroot/indentLine')
+-- カーソル下の単語にアンダーライン，色つけ
+Plug('itchyny/vim-cursorword')
+-- Plug 'RRethy/vim-illuminate'
+-- readable fold
+Plug('lambdalisue/readablefold.vim')
+-- 通知ポップアップ
+Plug('rcarriga/nvim-notify')
+-- floting term
+Plug('akinsho/toggleterm.nvim', { tag = 'v2.*' })
 
-  -- 移動系
-  'easymotion/vim-easymotion',
-  -- 日本語ヘルプ
-  'vim-jp/vimdoc-ja',
-  -- .使った繰り返しが強くなるらしい
-  'tpope/vim-repeat',
-  -- 禅モード
-  'junegunn/goyo.vim',
-  -- ウィンドウリサイズ
-  'simeji/winresizer',
-  -- vim plugin help generator
-  'LeafCage/vimhelpgenerator',
+-- テーマ
+Plug('morhetz/gruvbox', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('EdenEast/nightfox.nvim', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('joshdick/onedark.vim', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('NLKNguyen/papercolor-theme', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('sainnhe/gruvbox-material', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('jacoborus/tender.vim', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
+Plug('nanotech/jellybeans.vim', { ['do'] = 'cp colors/* ~/.config/nvim/colors/' })
 
-  -- ファジーファインダー
-  'nvim-lua/plenary.nvim',
-  'nvim-telescope/telescope.nvim',
-  -- fzf-lua (fzf.vim / denite から移行)
-  'ibhagwan/fzf-lua',
-
-  -- undo tree
-  'mbbill/undotree',
-  -- スクロールバー
-  'petertriho/nvim-scrollbar',
-  -- comfortable scroll
-  'psliwka/vim-smoothie',
-  -- インデント可視化
-  'Yggdroot/indentLine',
-  -- カーソル下の単語にアンダーライン，色つけ
-  'itchyny/vim-cursorword',
-  -- readable fold
-  'lambdalisue/readablefold.vim',
-  -- 通知ポップアップ
-  'rcarriga/nvim-notify',
-  -- floating term
-  { 'akinsho/toggleterm.nvim', version = '2.*' },
-
-  -- テーマ (lazy が runtimepath に colors/ を追加するため cp は不要)
-  'morhetz/gruvbox',
-  'EdenEast/nightfox.nvim',
-  'joshdick/onedark.vim',
-  'NLKNguyen/papercolor-theme',
-  'sainnhe/gruvbox-material',
-  'jacoborus/tender.vim',
-  'nanotech/jellybeans.vim',
-}, {
-  -- 設定は lua/plugins/*.lua 側で行うため遅延読み込みはしない
-  defaults = { lazy = false },
-  install = { missing = true },
-  change_detection = { notify = false },
-})
+vim.call('plug#end')

@@ -1,5 +1,4 @@
 -- nvim-treesitter (旧 plugins/tree-sitter.rc.vim)
--- master ブランチ固定のため .configs の旧 API がそのまま使える。
 require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
@@ -11,9 +10,13 @@ require('nvim-treesitter.configs').setup({
       'vue',
     },
   },
+  rainbow = {
+    enable = true,
+    -- disable = { "jsx", "cpp" }, list of languages you want to disable the plugin for
+    extended_mode = true, -- Also highlight non-bracket delimiters like html tags, boolean or table: lang -> boolean
+    max_file_lines = nil, -- Do not enable for files with more than n lines, int
+    -- colors = {}, -- table of hex strings
+    -- termcolors = {} -- table of colour name strings
+  },
 })
 require('hlargs').setup()
-
--- rainbow括弧 (メンテ終了した nvim-ts-rainbow の後継)
--- インストールするだけで自動的に有効化されるが、明示的に setup しておく。
-require('rainbow-delimiters.setup').setup({})

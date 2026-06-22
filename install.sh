@@ -21,11 +21,11 @@ if [ -z "$APPLY_DESKTOP" ]; then
   fi
 fi
 
-# ---- プラグインマネージャ (lazy.nvim) ------------------------------------------
-# lazy.nvim は nvim 初回起動時に nvim/lua/plugins/init.lua が自動で clone する
-# ため、ここでの事前インストールは不要。
-echo "プラグインマネージャは lazy.nvim (nvim 初回起動時に自動導入)"
-echo "Plugin manager is lazy.nvim (auto-installed on first nvim launch)"
+# ---- vim-plug -------------------------------------------------------------
+echo "vim-plugのインストール"
+echo "Install vim-plug"
+zsh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
 # ---- ディレクトリ作成 -------------------------------------------------------
 echo "設定ファイルを配置するディレクトリを作成"
