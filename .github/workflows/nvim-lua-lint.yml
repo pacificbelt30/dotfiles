@@ -1,0 +1,32 @@
+name: nvim-lua-lint
+
+# Neovim の Lua 設定 (nvim/) の静的チェック。
+# 構文チェック (luac -p) と luacheck による静的解析を行う。
+# nvim 本体やプラグインは不要。
+
+on:
+  push:
+    paths:
+      - 'nvim/**'
+      - '.luacheckrc'
+      - '.github/workflows/nvim-lua-lint.yml'
+  pull_request:
+    paths:
+      - 'nvim/**'
+      - '.luacheckrc'
+      - '.github/workflows/nvim-lua-lint.yml'
+
+jobs:
+  lua-static-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Lua, LuaRocks and luacheck
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.3 lua5.3-dev luarocks
+          sudo luarocks install luacheck
+
+      - name: Run static checks
+        run: ./nvim/tests/check.sh
