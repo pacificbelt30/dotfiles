@@ -63,11 +63,12 @@ echo "End pasting the link to the configuration file (under \$HOME)."
 # ---- $HOME/.config 以下の設定ファイル ------------------------------------------
 echo "リンク貼り付け開始(\$HOME/.config/以下)"
 echo "Start pasting the link to the configuration file (under \$HOME/.config/)."
-ln -snf "$(pwd)"/nvim/init.vim $HOME/.config/nvim/init.vim
-ln -snf "$(pwd)"/nvim/plugins $HOME/.config/nvim/plugins
+# 旧 vimscript 構成の残骸を掃除 (init.vim が残っていると init.lua と競合する)
+rm -f "$HOME"/.config/nvim/init.vim "$HOME"/.config/nvim/plugins "$HOME"/.config/nvim/rc
+ln -snf "$(pwd)"/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -snf "$(pwd)"/nvim/lua $HOME/.config/nvim/lua
 ln -snf "$(pwd)"/nvim/snippets $HOME/.config/nvim/snippets
 ln -snf "$(pwd)"/nvim/ftplugin $HOME/.config/nvim/ftplugin
-ln -snf "$(pwd)"/nvim/rc $HOME/.config/nvim/rc
 ln -snf "$(pwd)"/starship.toml $HOME/.config/starship.toml
 
 if [ "$APPLY_DESKTOP" = yes ]; then

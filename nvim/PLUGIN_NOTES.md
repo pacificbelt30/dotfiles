@@ -1,6 +1,6 @@
 # neovim プラグイン動作確認メモ
 
-`nvim/rc/plug.rc.vim` に記載の全プラグインについて、ヘッドレス neovim
+`nvim/lua/plugins/init.lua`（旧 `nvim/rc/plug.rc.vim`）に記載の全プラグインについて、ヘッドレス neovim
 (`nvim --headless +PlugInstall +qa`、ホームディレクトリを隔離した状態) で
 クローン・読み込みを確認した。
 
@@ -87,26 +87,28 @@ vim-cursorword, readablefold.vim, nvim-notify, toggleterm.nvim, および
   - 既にリストにある `nvim-telescope/telescope.nvim` で機能的に代替可能
     （ファジーファインダー用途が重複しているため、追加導入なしで移行できる）
 
-### 4. `nvim-lspconfig` の `tsserver` 指定（プラグインではなく設定値）
+### 4. `nvim-lspconfig` の `tsserver` 指定（プラグインではなく設定値）【対応済み】
 
-- 症状: `nvim/plugins/lua/nvim-cmp.lua` 内の
+- 症状: 旧 `nvim-cmp.lua` 内の
   `require('lspconfig')['tsserver'].setup{...}` で
-  `tsserver is deprecated, use ts_ls instead` という警告が出る
+  `tsserver is deprecated, use ts_ls instead` という警告が出ていた
   （エラーではないため起動は継続する）。
 - 原因: `nvim-lspconfig` 側で `tsserver` という設定名が `ts_ls` に
   改名されている。
-- 対応候補: `tsserver` → `ts_ls` に置き換える（プラグイン差し替えではなく
-  設定名の追従のみ）。
+- 対応: Lua移行に伴い `lua/plugins/cmp.lua` で `tsserver` → `ts_ls` に
+  置き換え済み（プラグイン差し替えではなく設定名の追従のみ）。
 
 ## まとめ
 
 - 即座に動かないのは `nvim-ts-rainbow` のみ。代替: `rainbow-delimiters.nvim`。
-- それに付随して `tree-sitter.rc.vim` の設定もどのみち更新が必要
+- それに付随して `lua/plugins/treesitter.lua` の設定もどのみち更新が必要
   （ブランチ固定 or 新API移行）。
 - `denite.nvim` はまだ動くが将来性は無く、移行するなら `ddu.vim` か
   既存の `telescope.nvim` に役割を統合するのが現実的。
-- `tsserver`→`ts_ls` は単純な設定値の追従で済む軽微な対応。
+- `tsserver`→`ts_ls` は単純な設定値の追従で済む軽微な対応（対応済み）。
 
-上記はいずれも本ファイルへの記録のみで、実際の `plug.rc.vim` /
-`tree-sitter.rc.vim` / `nvim-cmp.lua` は変更していない。
+注: 設定は全面的に Lua へ移行済み（`init.vim` ＋ `rc/`・`plugins/` の
+vimscript 一式 → `init.lua` ＋ `lua/` 以下）。上記のうちプラグイン差し替えを
+伴う項目（`nvim-ts-rainbow` / treesitter 新API / `denite.nvim`）は、
+「使用プラグイン自体は変更しない」方針に従い未対応のまま記録のみ。
 採用するかどうかはユーザー側で判断のこと。
