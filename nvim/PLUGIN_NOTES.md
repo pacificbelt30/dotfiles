@@ -52,20 +52,35 @@ stderr）を確認。
 
 ### 4. スニペットエンジン `SirVer/ultisnips` → 対応済み
 
-- 対応: **`L3MON4D3/LuaSnip`** + `saadparwaiz1/cmp_luasnip` +
-  `rafamadriz/friendly-snippets` へ移行。`ultisnips` /
-  `cmp-nvim-ultisnips` / `honza/vim-snippets` は削除。
+- 対応: **`L3MON4D3/LuaSnip`** + `rafamadriz/friendly-snippets` へ移行。
+  `ultisnips` / `cmp-nvim-ultisnips` / `honza/vim-snippets` は削除。
   自作スニペット（`nvim/snippets/*.snippets`、SnipMate 形式）は
   `luasnip.loaders.from_snipmate` で読み込む（`lua/plugins/luasnip.lua`）。
-  cmp 側の snippet engine / source / Tab マッピングも luasnip に変更済み
-  （`lua/plugins/cmp.lua`）。
 
-### 5. `nvim-lspconfig` の `tsserver` 指定 → 対応済み
+### 5. 補完エンジン `nvim-cmp` → `blink.cmp` へ移行（対応済み）
+
+- 対応: **`Saghen/blink.cmp`** へ移行。`nvim-cmp` 本体と
+  `cmp-nvim-lsp` / `cmp-buffer` / `cmp-path` / `cmp-cmdline` /
+  `cmp-nvim-lsp-signature-help` / `cmp-nvim-lua` / `saadparwaiz1/cmp_luasnip`
+  を削除し、blink の組み込みソース（lsp / path / snippets / buffer）と
+  組み込み signature help / cmdline 補完に置き換えた。設定は
+  `lua/plugins/blink.lua`（旧 `cmp.lua`）。
+- キーバインドは旧 nvim-cmp の挙動を踏襲
+  （`<Tab>`/`<S-Tab>`/`<CR>`/`<C-Space>`/`<C-e>`/`<C-b>`/`<C-f>`）。
+- スニペットは `snippets.preset = 'luasnip'` で LuaSnip を利用。
+- `cmp-latex-symbols`（nvim-cmp 専用ソース）は **`Saghen/blink.compat`**
+  （`impersonate_nvim_cmp`）経由で引き続き利用。
+
+### 6. `nvim-lspconfig` の `tsserver` 指定 → 対応済み
 
 - 原因: `nvim-lspconfig` 側で `tsserver` が `ts_ls` に改名された。
-- 対応: `lua/plugins/cmp.lua` で `tsserver` → `ts_ls` に置き換え済み。
+- 対応: `lua/plugins/blink.lua` で `tsserver` → `ts_ls` に置き換え済み。
+  LSP の capabilities は `require('blink.cmp').get_lsp_capabilities()` で取得。
 
 ## 補足
 
 - `nvim/snippets/tex.snip` は neosnippet 形式のため LuaSnip では読み込まれない
   （`.snippets`（SnipMate 形式）のみ対象）。必要なら SnipMate 形式へ変換する。
+- `lua/plugins/blink.lua` を最初に読み込んだ際、blink の高速マッチャ用
+  プリビルト Rust バイナリ（`libblink_cmp_fuzzy.so`）が自動取得される。
+  取得に失敗した場合も Lua 実装にフォールバックして動作する。
