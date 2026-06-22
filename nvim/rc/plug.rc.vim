@@ -14,10 +14,9 @@ Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' }
 " ファイルタイプを
 Plug 'Shougo/context_filetype.vim'
 " コメントアウト
-"Plug 'pacificbelt30/easyCO.vim'
-Plug '~/work/easyCO.vim'
+Plug 'pacificbelt30/easyCO.vim'
 " アスタリスク拡張
-Plug '~/work/exasterisk.vim'
+Plug 'pacificbelt30/exasterisk.vim'
 " タグ生成 F12
 "Plug 'preservim/tagbar'
 " powerline的なやつになる

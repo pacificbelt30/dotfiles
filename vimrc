@@ -60,8 +60,8 @@ set tabstop=2
 " 行頭でのTab文字の表示幅
 set shiftwidth=2
 set softtabstop=2
-"python用
-setlocal expandtab tabstop=2 shiftwidth=2 softtabstop=2
+" python用 (4文字スペース)
+autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 " 残り五行からスクロール開始
 set scrolloff=5
 

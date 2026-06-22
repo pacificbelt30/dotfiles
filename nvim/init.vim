@@ -17,7 +17,6 @@ source $HOME/.config/nvim/rc/myTextObjects.rc.vim
 "source ~/.vim/co.vim
 "source $HOME/.config/nvim/plugins/neosnippet.rc.vim
 source $HOME/.config/nvim/plugins/airline.rc.vim
-"source $HOME/.config/nvim/plugins/tagbar.rc.vim
 source $HOME/.config/nvim/plugins/tagbar.rc.vim
 " source $HOME/.config/nvim/plugins/coc.rc.vim
 source $HOME/.config/nvim/plugins/denite.rc.vim
@@ -38,12 +37,6 @@ lua require('telescoperc')
 "source $HOME/.config/nvim/plugins/luaoptions.rc.vim
 lua require('luaoptions')
 
-" test script
-source $HOME/work/float_term/float_term.vim
-let test=0
-augroup test
-  autocmd filetype vim let test += 1
-augroup END
 " Find files using Telescope command-line sugar.
 "nnoremap <leader>ff <cmd>Telescope find_files<cr>
 "nnoremap <leader>fg <cmd>Telescope live_grep<cr>

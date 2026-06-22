@@ -1,0 +1,77 @@
+# ~/.zshrc
+# Minimal, framework-free zsh config. The prompt is fully owned by starship
+# (see ../../starship.toml) so no other prompt theme (powerlevel10k, prezto
+# themes, ...) should be enabled here.
+
+# ---- Environment ------------------------------------------------------
+export EDITOR=nvim
+export PATH="$HOME/.local/bin:$PATH"
+export QT_IM_MODULE=fcitx
+
+# ---- History ------------------------------------------------------------
+HISTFILE=~/.zsh_history
+HISTSIZE=50000
+SAVEHIST=50000
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt SHARE_HISTORY
+setopt APPEND_HISTORY
+
+# ---- Completion ---------------------------------------------------------
+autoload -Uz compinit
+compinit -C
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# ---- Key bindings ---------------------------------------------------------
+bindkey -e
+
+# ---- fzf ------------------------------------------------------------------
+if command -v fzf >/dev/null 2>&1; then
+  if ! eval "$(fzf --zsh 2>/dev/null)"; then
+    for f in /usr/share/fzf/key-bindings.zsh /usr/share/fzf/completion.zsh; do
+      [[ -f "$f" ]] && source "$f"
+    done
+  fi
+fi
+
+# ---- Language version managers ---------------------------------------------
+# python: managed by uv (see ../../lang/python/install_uv.sh)
+#   `uv` itself lives in ~/.local/bin, already on PATH above.
+
+# node: managed by nvm (see ../../lang/node/install_nvm.sh)
+export NVM_DIR="$HOME/.nvm"
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+
+# ---- Aliases ----------------------------------------------------------------
+alias ls='eza --icons'
+alias lt='eza --icons --tree -L 3'
+alias gadd='git add'
+alias gcommit='git commit -m'
+alias gpush='git push'
+alias textemp='cp ~/Documents/latextemp.tex "$(pwd)/report.tex"'
+
+# fd/bat are named fdfind/batcat on Debian/Ubuntu; tools/cli/install_cli_tools.sh
+# already symlinks them under ~/.local/bin, this is just a fallback.
+command -v fd >/dev/null 2>&1 || { command -v fdfind >/dev/null 2>&1 && alias fd='fdfind'; }
+command -v bat >/dev/null 2>&1 || { command -v batcat >/dev/null 2>&1 && alias bat='batcat'; }
+
+# ls after cd, except when landing back in $HOME
+chpwd() {
+  [[ "$PWD" != "$HOME" ]] && ls
+}
+
+# ---- Sandbox ----------------------------------------------------------------
+# `sand`: build/enter a disposable Docker sandbox (see tools/sandbox/) with
+# $PWD mounted at /work. Override DOTFILES_DIR if this repo isn't at ~/dotfiles.
+export DOTFILES_DIR="${DOTFILES_DIR:-$HOME/dotfiles}"
+sand() {
+  "$DOTFILES_DIR/tools/sandbox/sand.sh" "$@"
+}
+
+# machine-local overrides (untracked, e.g. private aliases/sources)
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# ---- Prompt -------------------------------------------------------------
+eval "$(starship init zsh)"
