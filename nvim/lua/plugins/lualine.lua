@@ -1,16 +1,4 @@
--- ステータスライン (旧 plugins/airline.rc.vim)
-local g = vim.g
-
--- vim-airline
-g['airline#extensions#tabline#enabled'] = 0
-g['airline#extensions#tabline#left_sep'] = ' '
-g['airline#extensions#tabline#left_alt_sep'] = '|'
-g['airline#extensions#tabline#formatter'] = 'default'
--- g.airline_theme = 'molokai'
-g.airline_theme = 'deus'
-g.airline_powerline_fonts = 1
-
--- lualine config
+-- ステータスライン (lualine。旧 plugins/airline.rc.vim / airline.lua から移行)
 require('lualine').setup({
   options = {
     icons_enabled = true,
