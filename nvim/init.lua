@@ -7,7 +7,7 @@ vim.g.mapleader = ' '
 -- 基本設定
 require('options')
 
--- プラグイン (vim-plug)
+-- プラグイン (lazy.nvim)
 local has_network = true
 if has_network then
   require('plugins')
@@ -20,16 +20,17 @@ require('keymaps')
 require('textobjects')
 
 -- プラグインごとの設定読み込み
-require('plugins.airline')
+require('plugins.lualine')
 require('plugins.tagbar')
 -- require('plugins.coc')   -- coc.nvim は nvim-cmp に移行したため無効
-require('plugins.denite')
+-- require('plugins.denite') -- denite は fzf-lua に移行したため無効
 require('plugins.easymotion')
 require('plugins.treesitter')
 require('plugins.fzf')
 require('plugins.autopairs')
 require('plugins.indentline')
 require('plugins.toggleterm')
+require('plugins.luasnip')
 require('plugins.cmp')
 require('plugins.telescope')
 require('plugins.scrollbar')
