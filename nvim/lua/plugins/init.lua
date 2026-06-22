@@ -21,8 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- 置換 (operator)
+  -- vim-operator-replace は operator#user#define を使うため
+  -- vim-operator-user を先に読み込ませる (lazy は宣言順を保証しない)
   'kana/vim-operator-user',
-  'kana/vim-operator-replace',
+  { 'kana/vim-operator-replace', dependencies = { 'kana/vim-operator-user' } },
   -- textobj
   'kana/vim-textobj-user',
   -- 括弧
