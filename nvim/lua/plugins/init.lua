@@ -47,22 +47,20 @@ require('lazy').setup({
   -- git の追加範囲とかにマークがつく
   'airblade/vim-gitgutter',
 
-  -- 補完 / LSP (nvim-cmp)
+  -- LSP
   'neovim/nvim-lspconfig',
   'williamboman/mason.nvim',
   'williamboman/mason-lspconfig.nvim',
-  'hrsh7th/cmp-nvim-lsp',
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'hrsh7th/nvim-cmp',
-  'hrsh7th/cmp-nvim-lsp-signature-help',
-  'hrsh7th/cmp-nvim-lua',
-  'kdheepak/cmp-latex-symbols',
 
-  -- スニペット (LuaSnip。ultisnips / vim-snippets から移行)
+  -- 補完 (blink.cmp。nvim-cmp から移行)
+  { 'saghen/blink.cmp', version = '*' },
+  -- nvim-cmp 用ソースを blink で使う互換レイヤ (latex_symbols 用)
+  { 'saghen/blink.compat', version = '*', opts = { impersonate_nvim_cmp = true } },
+  -- LaTeX 記号補完ソース (blink.compat 経由で利用)
+  { 'kdheepak/cmp-latex-symbols', dependencies = { 'saghen/blink.compat' } },
+
+  -- スニペット (LuaSnip)
   'L3MON4D3/LuaSnip',
-  'saadparwaiz1/cmp_luasnip',
   'rafamadriz/friendly-snippets',
 
   -- tagbar の lsp 対応版
