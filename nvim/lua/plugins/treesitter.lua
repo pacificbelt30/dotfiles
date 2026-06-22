@@ -1,5 +1,5 @@
-lua <<EOF
-require'nvim-treesitter.configs'.setup {
+-- nvim-treesitter (旧 plugins/tree-sitter.rc.vim)
+require('nvim-treesitter.configs').setup({
   highlight = {
     enable = true,
     disable = {
@@ -8,7 +8,7 @@ require'nvim-treesitter.configs'.setup {
       'toml',
       'c_sharp',
       'vue',
-    }
+    },
   },
   rainbow = {
     enable = true,
@@ -17,7 +17,6 @@ require'nvim-treesitter.configs'.setup {
     max_file_lines = nil, -- Do not enable for files with more than n lines, int
     -- colors = {}, -- table of hex strings
     -- termcolors = {} -- table of colour name strings
-  }
-}
+  },
+})
 require('hlargs').setup()
-EOF
