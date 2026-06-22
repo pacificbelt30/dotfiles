@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 set -euCo pipefail
 
 function main() {
@@ -19,12 +20,11 @@ function main() {
   if [[ $# -ne 0 ]]; then
     eval "${menu[$1]}"
   else
-    for key in ${!menu[@]}; do
+    for key in "${!menu[@]}"; do
       echo -ne "$key${menu_icon[$key]}"
     done
   fi
 
 }
 
-main $@
-
+main "$@"

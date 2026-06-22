@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 service=$BLOCK_INSTANCE
 #service="sshd"
 

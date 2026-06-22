@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # メモリ情報出力
 # freeコマンドの見方
 # https://milestone-of-se.nesuke.com/sv-basic/linux-basic/free-command/
@@ -10,12 +11,11 @@
 # used:total-available or total-free
 meminfo=$(cat /proc/meminfo)
 total=$(echo "$meminfo" | grep MemTotal | awk '{print $2}')
-free=$(echo "$meminfo" | grep MemFree | awk '{print $2}')
 ava=$(echo "$meminfo" | grep MemAvailable | awk '{print $2}')
-used=$(($total-$ava))
+used=$((total - ava))
 #echo $used
-per=$(($used*100/$total))
+per=$((used * 100 / total))
 used_GB=$(echo "scale=1; $used/(1024.0*1024.0)" | bc)
 total_GB=$(echo "scale=1; $total/(1024.0*1024.0)" | bc)
 #echo $per \%
-echo $used_GB"G"\/$total_GB"G" \($per\%\)
+echo "${used_GB}G/${total_GB}G (${per}%)"

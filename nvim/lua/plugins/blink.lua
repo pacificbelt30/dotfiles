@@ -85,16 +85,9 @@ require('mason-lspconfig').setup({
   ensure_installed = { 'pyright', 'texlab' },
 })
 
--- lsp setting
-require('lspconfig')['pyright'].setup({
-  capabilities = capabilities,
-})
-
-require('lspconfig')['texlab'].setup({
-  capabilities = capabilities,
-})
-
--- tsserver は ts_ls に改名された
-require('lspconfig')['ts_ls'].setup({
-  capabilities = capabilities,
-})
+for _, server in ipairs({ 'pyright', 'texlab', 'ts_ls' }) do
+  vim.lsp.config(server, {
+    capabilities = capabilities,
+  })
+end
+vim.lsp.enable({ 'pyright', 'texlab', 'ts_ls' })

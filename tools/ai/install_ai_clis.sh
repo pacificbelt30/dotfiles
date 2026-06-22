@@ -5,6 +5,7 @@ set -euo pipefail
 
 NVM_DIR="${NVM_DIR:-$HOME/.nvm}"
 if ! command -v npm >/dev/null 2>&1 && [ -s "$NVM_DIR/nvm.sh" ]; then
+  # shellcheck source=/dev/null
   . "$NVM_DIR/nvm.sh"
 fi
 

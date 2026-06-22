@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #firefox run or raise
 #reference
 #http://malkalech.com/i3_wm_4_run_or_raise

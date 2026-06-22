@@ -9,7 +9,9 @@ if ! command -v uv >/dev/null 2>&1; then
   exit 1
 fi
 
-uv sync
+PYTHON_VERSION="${PYTHON_VERSION:-3.12}"
+uv python install "$PYTHON_VERSION"
+uv sync --python "$PYTHON_VERSION"
 
 echo "Done. Activate with: source $(pwd)/.venv/bin/activate"
 echo "Or run a one-off command with: uv run --project $(pwd) python exploit.py"

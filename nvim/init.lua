@@ -1,6 +1,10 @@
 -- Neovim設定エントリポイント (Lua版)
 -- 旧 init.vim を全面的に Lua へ移行したもの。
 
+if vim.fn.has('nvim-0.11') == 0 then
+  error('This Neovim config requires Neovim 0.11 or newer.')
+end
+
 -- mapleaderはプラグイン読み込み前に設定する必要がある
 vim.g.mapleader = ' '
 

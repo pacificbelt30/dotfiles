@@ -35,6 +35,18 @@ makedir () {
     mkdir -p "$HOME/$1"
   fi
 }
+link_if_exists () {
+  local src="$1"
+  local dst="$2"
+  if [ -e "$src" ]; then
+    ln -snf "$src" "$dst"
+  else
+    if [ -L "$dst" ]; then
+      rm -f "$dst"
+    fi
+    echo "warning: optional file not found, skip link: $src -> $dst" >&2
+  fi
+}
 makedir .vim
 makedir .config
 makedir .config/nvim
@@ -79,16 +91,16 @@ if [ "$APPLY_DESKTOP" = yes ]; then
   ln -snf "$(pwd)"/desktop/i3/i3blocks_up.conf $HOME/.config/i3/i3blocks_up.conf
   ln -snf "$(pwd)"/desktop/i3/i3blocks_bottom.conf $HOME/.config/i3/i3blocks_bottom.conf
   makedir Pictures
-  ln -snf "$(pwd)"/desktop/i3/wallpaper.jpg $HOME/Pictures/wallpaper.jpg
+  link_if_exists "$(pwd)"/desktop/i3/wallpaper.jpg "$HOME"/Pictures/wallpaper.jpg
   ln -snf "$(pwd)"/desktop/i3/scripts $HOME/.config/i3/scripts
   ln -snf "$(pwd)"/desktop/terminator/config $HOME/.config/terminator/config
   ln -snf "$(pwd)"/desktop/picom/picom.conf $HOME/.config/picom/picom.conf
 
   # i3wm-setup submodule から持ってくるもの
-  ln -snf "$(pwd)"/i3wm-setup/.config/i3/keybindings $HOME/.config/i3/keybindings
-  ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/terminalrc $HOME/.config/xfce4/terminal/terminalrc
-  ln -snf "$(pwd)"/i3wm-setup/.config/xfce4/terminal/accels.scm $HOME/.config/xfce4/terminal/accels.scm
-  ln -snf "$(pwd)"/i3wm-setup/.config/dunst/dunstrc $HOME/.config/dunst/dunstrc
+  link_if_exists "$(pwd)"/i3wm-setup/.config/i3/keybindings "$HOME"/.config/i3/keybindings
+  link_if_exists "$(pwd)"/i3wm-setup/.config/xfce4/terminal/terminalrc "$HOME"/.config/xfce4/terminal/terminalrc
+  link_if_exists "$(pwd)"/i3wm-setup/.config/xfce4/terminal/accels.scm "$HOME"/.config/xfce4/terminal/accels.scm
+  link_if_exists "$(pwd)"/i3wm-setup/.config/dunst/dunstrc "$HOME"/.config/dunst/dunstrc
 else
   echo "デスクトップ環境の設定はスキップ(再度実行する場合は DOTFILES_DESKTOP=yes を指定)"
 fi

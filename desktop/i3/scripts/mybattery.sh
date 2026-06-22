@@ -1,8 +1,9 @@
+#!/usr/bin/env bash
 # battery remaining
 acpi_info=$(acpi -b | grep "Battery 0")
-status=$(echo $acpi_info | awk '{print $3}' | tr -d ",")
-remain_per=$(echo $acpi_info | awk '{print $4}' | tr -d "," | tr -d "%")
-remain_time=$(echo $acpi_info | awk '{print $5}' | tr -d "," | sed -r "s/:[0-9]+$//g")
+status=$(echo "$acpi_info" | awk '{print $3}' | tr -d ",")
+remain_per=$(echo "$acpi_info" | awk '{print $4}' | tr -d "," | tr -d "%")
+remain_time=$(echo "$acpi_info" | awk '{print $5}' | tr -d "," | sed -r "s/:[0-9]+$//g")
 #echo $status $remain_time $remain_per
 up=" "
 down=" "
@@ -26,5 +27,4 @@ else
     echo "<span foreground=\"$low_color\">$remain_per% $down ($remain_time)</span>"
   fi
 fi
-
 
