@@ -1,8 +1,0 @@
-.config/nvim
-.config/rofi
-.config/i3
-.config/compton
-.vimrc
-.zshrc
-.zprezto
-.latexmkrc
