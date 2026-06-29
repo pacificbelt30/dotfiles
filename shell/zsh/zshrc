@@ -44,6 +44,9 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
 
+# go: installed by tools/sandbox/install_codex_dock.sh
+[[ -d /usr/local/go/bin ]] && export PATH="/usr/local/go/bin:${GOPATH:-$HOME/go}/bin:$PATH"
+
 # ---- Aliases ----------------------------------------------------------------
 alias ls='eza --icons'
 alias lt='eza --icons --tree -L 3'
