@@ -1,7 +1,7 @@
 #!/bin/zsh
 # dotfilesのセットアップスクリプト
 # vim, i3, zsh, picom, rofi, terminator, latex, starship などの設定を配置し、
-# 続けて Python(uv) / Node.js(nvm) のインストールスクリプトを実行する。
+# 続けて Python(uv) / Node.js(nvm) / AI CLI / Docker / codex-dock のインストールを行う。
 
 set -e
 cd "$(dirname "$0")"
@@ -104,6 +104,30 @@ echo "Node.js(nvm)のインストール"
 # ---- AI CLI (Claude Code, Codex) のインストール -----------------------------
 echo "Claude Code / Codex CLIのインストール"
 ./tools/ai/install_ai_clis.sh
+
+# ---- Docker + codex-dock (AI サンドボックス) の導入 ----------------------------
+# WSL/VM の Ubuntu 24.04 向け。DOTFILES_DOCKER=yes で明示できる。
+APPLY_DOCKER="${DOTFILES_DOCKER:-}"
+if [ -z "$APPLY_DOCKER" ]; then
+  if [ -t 0 ]; then
+    read "REPLY?Docker と codex-dock (AI sandbox) をインストールしますか? [y/N] "
+    case "$REPLY" in
+      [yY]*) APPLY_DOCKER=yes ;;
+      *) APPLY_DOCKER=no ;;
+    esac
+  else
+    APPLY_DOCKER=no
+  fi
+fi
+
+if [ "$APPLY_DOCKER" = yes ]; then
+  echo "Dockerのインストール"
+  ./tools/sandbox/install_docker.sh
+  echo "codex-dock (sandbox-codex) のインストール"
+  ./tools/sandbox/install_codex_dock.sh
+else
+  echo "Docker / codex-dock のインストールはスキップ (DOTFILES_DOCKER=yes で再実行可能)"
+fi
 
 echo "セットアップ完了。シェルを再起動するか 'exec zsh' を実行してください。"
 echo "Setup complete. Restart your shell or run 'exec zsh'."
