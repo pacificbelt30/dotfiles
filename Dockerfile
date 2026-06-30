@@ -42,9 +42,11 @@ ENV PATH="${GOPATH}/bin:/home/test/.local/bin:${PATH}"
 RUN git clone --recursive https://github.com/pacificbelt30/dotfiles
 
 # codex-dock: clone, build, install
+# sudo resets PATH (secure_path), so pass it explicitly for the install target
+# which may re-invoke the build as a prerequisite.
 RUN git clone --depth 1 https://github.com/pacificbelt30/sandbox-codex.git \
         /home/test/.local/share/codex-dock/src \
     && cd /home/test/.local/share/codex-dock/src \
     && make build \
-    && sudo make install \
+    && sudo env "PATH=$PATH" make install \
     && make install-config

@@ -78,7 +78,7 @@ fi
 echo "==> Building and installing codex-dock ..."
 cd "$CLONE_DIR"
 make build
-sudo make install
+sudo env "PATH=$PATH" make install
 
 echo "==> Installing default config ..."
 make install-config
